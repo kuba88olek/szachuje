@@ -22,7 +22,7 @@ before_script:
     - export DISPLAY=:99.0
     - wget http://selenium.googlecode.com/files/selenium-server-standalone-2.35.0.jar
     - java -jar selenium-server-standalone-2.35.0.jar > /dev/null &
-    - sleep 5
+    - sleep 30
 
 script:
   - bin/behat --no-snippets --no-paths --verbose
