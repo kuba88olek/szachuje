@@ -1,0 +1,42 @@
+default:
+    filters:
+        tags: "~@wip&&@pc"
+    context:
+        class: Szachuje\Behat\Context\FeatureContext
+        parameters:
+            browser_width: 1280
+            browser_height: 960
+    extensions:
+        Behat\Symfony2Extension\Extension:
+            mink_driver: true
+            kernel:
+                env : test
+        Behat\MinkExtension\Extension:
+            default_session: 'symfony2'
+            base_url: "http://szachuje.dev/app_test.php"
+            browser_name: "firefox"
+            selenium2:
+                browser: "firefox"
+                wd_host: http://127.0.0.1:4444/wd/hub
+        SensioLabs\Behat\PageObjectExtension\Extension: ~
+
+mobile:
+    filters:
+        tags: "~@wip&&@mobile"
+    context:
+        parameters:
+            browser_width: 480
+            browser_height: 360
+    extensions:
+        Behat\Symfony2Extension\Extension:
+            mink_driver: true
+            kernel:
+                env : test
+        Behat\MinkExtension\Extension:
+            default_session: 'symfony2'
+            base_url: "http://szachuje.dev/app_test.php"
+            browser_name: "firefox"
+            selenium2:
+                browser: "firefox"
+                wd_host: http://127.0.0.1:4444/wd/hub
+        SensioLabs\Behat\PageObjectExtension\Extension: ~

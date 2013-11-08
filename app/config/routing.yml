@@ -1,0 +1,5 @@
+szachuje_training:
+    resource: "@SzachujeWebBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
