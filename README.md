@@ -12,17 +12,15 @@ Folder [features/gfx](features/gfx) zawiera projekty graficzne wymagane do stwor
 
 Aplikacja składa się z 3 stron, których treści przedstawione są na projektach graficznych
 
-1. Strona główna
-- tekst powitalny
-- 2 najnowsze aktualności
-- grafika reprezentująca firmę
-
-2. O firmie
-- prosta strona tekstowa
-
-3. Kontakt
-- szczegółowe dane kontaktowe firmy
-- formularz wysyłające zapytanie na kontaktowy adres email firmy
+- Strona główna
+ - tekst powitalny
+ - 2 najnowsze aktualności
+ - grafika reprezentująca firmę
+- O firmie
+ - prosta strona tekstowa
+- Kontakt
+ - szczegółowe dane kontaktowe firmy
+ - formularz wysyłające zapytanie na kontaktowy adres email firmy
 
 ##Rozwój aplikacji
 Proces pracy powinien wyglądać (mniej lub więcej) w następujący sposób:
