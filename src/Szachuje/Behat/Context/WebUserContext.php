@@ -52,6 +52,10 @@ class WebUserContext extends PageObjectContext implements MinkAwareInterface
      */
     public function logoFirmySzachujeNiePowinnoBycWidoczne()
     {
-        expect($this->mink->getSession()->getPage()->find('css', '#logo')->isVisible())->toBe(false);
+        $logo = $this->mink->getSession()->getPage()->find('css', '#logo');
+        if (!isset($logo)) {
+            echo $this->mink->getSession()->getPage()->getHtml();
+        }
+        expect($logo->isVisible())->toBe(false);
     }
 }
