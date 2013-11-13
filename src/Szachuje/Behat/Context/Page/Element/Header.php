@@ -29,6 +29,6 @@ class Header extends Element
 
     public function hasMenuElement($element)
     {
-        return $this->has('css', 'nav ul li:contains("'.$element.'")');
+        return $this->has('css',  sprintf('nav ul li:contains("%s")', $element));
     }
 }

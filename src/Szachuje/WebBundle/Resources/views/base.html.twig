@@ -5,17 +5,40 @@
     <title>{% block title %}{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block stylesheets %}
-    {% stylesheets
+        {% stylesheets
         'bundles/szachujeweb/css/bootstrap_grid.css'
-    filter='cssrewrite' %}
-    <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %}
+        filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
 <body>
-<h1 id="logo" class="hidden-xs"><img src="{{ asset('bundles/szachujeweb/img/logo.png') }}" alt=""/></h1>
+<header>
+    <img class="hidden-xs" src="{{ asset('bundles/szachujeweb/img/logo.png') }}" alt="Logo" id="logo" />
+    <nav>
+        <ul>
+            <li>Strona główna</li>
+            <li>O nas</li>
+            <li>Kontakt</li>
+        </ul>
+    </nav>
+</header>
 {% block body %}{% endblock %}
+<footer>
+    <h3>Kontakt</h3>
+    <p>Szachuje agencja public relations<br>
+        ul. Warszawska 1/2, 12-345 WARSZAWA<br>
+        T: (+48) 12 345 678<br>
+        E: biuro@szachuje.com</p>
+    <nav class="hidden-xs">
+        <ul>
+            <li>strona główna</li>
+            <li>o nas</li>
+            <li>kontakt</li>
+        </ul>
+    </nav>
+</footer>
 {% block javascripts %}{% endblock %}
 </body>
 </html>

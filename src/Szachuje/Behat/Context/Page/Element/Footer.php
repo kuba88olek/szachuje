@@ -14,22 +14,17 @@ class Footer extends Element
 
     public function hasContactTitleElement($footerText)
     {
-        return $this->has('css', 'h3:contains("'.$footerText.'")');
+        return $this->has('css', sprintf('h3:contains("%s")', $footerText));
     }
 
     public function hasDetails($footerText)
     {
-        return $this->has('css', 'p:contains("'.$footerText.'")');
+        return $this->has('css', sprintf('p:contains("%s")', $footerText));
     }
 
     public function hasMenuElement($element)
     {
-        return $this->has('css', 'nav ul li:contains("'.$element.'")');
-    }
-
-    public function visibilityMenuInMobile()
-    {
-        return $this->find('css', 'nav')->isVisible();
+        return $this->has('css',  sprintf('nav ul li:contains("%s")', $element));
     }
 
     public function isMenuVisible($browserType)
