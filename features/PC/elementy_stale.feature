@@ -7,7 +7,7 @@ Potrzeba biznesowa: Strona informacyjna agencji kreatywnej Szachuje przystosowan
   Chciałbym móc przeglądnąć stronę firmy na ekranie o rozdzielczości co namniej 960x800px
 
   Scenariusz: Widoczność nagłówka strony
-    Zakładając, że otworzyłem "Stronę główną" serwisu
+    Zakładając że otworzyłem "Stronę główną" serwisu
     Wtedy powinienem w nagłówku zobaczyć logo firmy Szachuje
     Oraz w nagłówku powinienem widzieć menu serwisu zawierające następujące elementy
       | Nazwa         |
@@ -16,10 +16,11 @@ Potrzeba biznesowa: Strona informacyjna agencji kreatywnej Szachuje przystosowan
       | Kontakt       |
 
   Scenariusz: Widoczność stopki strony
-    Zakładając, że otworzyłem "Stronę główną" serwisu
+    Zakładając że otworzyłem "Stronę główną" serwisu
     Wtedy powinienem zobaczyć stopkę
     I stopka powinna zawierać element "Kontakt" z danymi kontaktowymi firmy
     I dane kontaktowe w stopce powinny zawierać następujące elementy
+      | Treść                               |
       | Szachuje agencja public relations   |
       | ul. Warszawska 1/2, 12-345 WARSZAWA |
       | T: (+48) 12 345 678                 |
