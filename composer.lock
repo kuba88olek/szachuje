@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "51578e6695b4b0d1312f83ed38496825",
+    "hash": "bc9bdbd3731879bb4a7a3a4ca175a7c7",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -118,7 +118,7 @@
             ],
             "authors": [
                 {
-                    "name": "Jonathan H. Wage",
+                    "name": "Jonathan Wage",
                     "email": "jonwage@gmail.com",
                     "homepage": "http://www.jwage.com/",
                     "role": "Creator"
@@ -137,7 +137,7 @@
                     "email": "kontakt@beberlei.de"
                 },
                 {
-                    "name": "Johannes M. Schmitt",
+                    "name": "Johannes Schmitt",
                     "email": "schmittjoh@gmail.com",
                     "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
@@ -204,7 +204,7 @@
                     "email": "kontakt@beberlei.de"
                 },
                 {
-                    "name": "Johannes M. Schmitt",
+                    "name": "Johannes Schmitt",
                     "email": "schmittjoh@gmail.com",
                     "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
@@ -258,7 +258,7 @@
             ],
             "authors": [
                 {
-                    "name": "Jonathan H. Wage",
+                    "name": "Jonathan Wage",
                     "email": "jonwage@gmail.com",
                     "homepage": "http://www.jwage.com/",
                     "role": "Creator"
@@ -277,7 +277,7 @@
                     "email": "kontakt@beberlei.de"
                 },
                 {
-                    "name": "Johannes M. Schmitt",
+                    "name": "Johannes Schmitt",
                     "email": "schmittjoh@gmail.com",
                     "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
@@ -329,7 +329,7 @@
             ],
             "authors": [
                 {
-                    "name": "Jonathan H. Wage",
+                    "name": "Jonathan Wage",
                     "email": "jonwage@gmail.com",
                     "homepage": "http://www.jwage.com/",
                     "role": "Creator"
@@ -476,7 +476,7 @@
                     "email": "kontakt@beberlei.de"
                 },
                 {
-                    "name": "Johannes M. Schmitt",
+                    "name": "Johannes Schmitt",
                     "email": "schmittjoh@gmail.com",
                     "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
@@ -530,7 +530,7 @@
                     "email": "roman@code-factory.org"
                 },
                 {
-                    "name": "Johannes M. Schmitt",
+                    "name": "Johannes Schmitt",
                     "email": "schmittjoh@gmail.com",
                     "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
@@ -588,7 +588,7 @@
             ],
             "authors": [
                 {
-                    "name": "Jonathan H. Wage",
+                    "name": "Jonathan Wage",
                     "email": "jonwage@gmail.com",
                     "homepage": "http://www.jwage.com/",
                     "role": "Creator"
@@ -1918,12 +1918,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/BossaConsulting/phpspec2-expect.git",
-                "reference": "d28fd0a927a3eb6c6d2de35011a85bcc5e79fb57"
+                "reference": "ca1ec876b793684462167b9c65b2fef959610c56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/BossaConsulting/phpspec2-expect/zipball/d28fd0a927a3eb6c6d2de35011a85bcc5e79fb57",
-                "reference": "d28fd0a927a3eb6c6d2de35011a85bcc5e79fb57",
+                "url": "https://api.github.com/repos/BossaConsulting/phpspec2-expect/zipball/ca1ec876b793684462167b9c65b2fef959610c56",
+                "reference": "ca1ec876b793684462167b9c65b2fef959610c56",
                 "shasum": ""
             },
             "require": {
@@ -1953,7 +1953,7 @@
                 "spec",
                 "specification"
             ],
-            "time": "2013-11-04 07:42:31"
+            "time": "2013-11-08 11:32:19"
         },
         {
             "name": "doctrine/data-fixtures",
@@ -2108,12 +2108,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/phpspec.git",
-                "reference": "c820f90d10e0684a31af5208bf0fb2cd27096115"
+                "reference": "c631a7c980d5be303ba513c1598a663393a59028"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/phpspec/zipball/c820f90d10e0684a31af5208bf0fb2cd27096115",
-                "reference": "c820f90d10e0684a31af5208bf0fb2cd27096115",
+                "url": "https://api.github.com/repos/phpspec/phpspec/zipball/c631a7c980d5be303ba513c1598a663393a59028",
+                "reference": "c631a7c980d5be303ba513c1598a663393a59028",
                 "shasum": ""
             },
             "require": {
@@ -2168,7 +2168,7 @@
                 "testing",
                 "tests"
             ],
-            "time": "2013-11-05 21:24:22"
+            "time": "2013-11-13 10:07:05"
         },
         {
             "name": "phpspec/prophecy",
@@ -2227,16 +2227,16 @@
         },
         {
             "name": "sensiolabs/behat-page-object-extension",
-            "version": "v1.0.2",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/BehatPageObjectExtension.git",
-                "reference": "f49b8fe3789ba866b141baf851c5a6843326917b"
+                "reference": "2a8de8aabc6631ab83e1fe282bb93107b64685de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/BehatPageObjectExtension/zipball/f49b8fe3789ba866b141baf851c5a6843326917b",
-                "reference": "f49b8fe3789ba866b141baf851c5a6843326917b",
+                "url": "https://api.github.com/repos/sensiolabs/BehatPageObjectExtension/zipball/2a8de8aabc6631ab83e1fe282bb93107b64685de",
+                "reference": "2a8de8aabc6631ab83e1fe282bb93107b64685de",
                 "shasum": ""
             },
             "require": {
@@ -2282,7 +2282,7 @@
                 "Behat",
                 "page"
             ],
-            "time": "2013-08-13 09:40:20"
+            "time": "2013-11-13 09:31:10"
         }
     ],
     "aliases": [
@@ -2292,6 +2292,7 @@
     "stability-flags": {
         "phpspec/phpspec": 20,
         "behat/behat": 0,
+        "sensiolabs/behat-page-object-extension": 20,
         "bossa/phpspec2-expect": 20
     },
     "platform": {
