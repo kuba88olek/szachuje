@@ -14,7 +14,7 @@ class Footer extends Element
 
     public function hasContactTitleElement($footerText)
     {
-        return $this->has('css', sprintf('h3:contains("%s")', $footerText));
+        return $this->has('css', sprintf('h1:contains("%s")', $footerText));
     }
 
     public function hasDetails($footerText)

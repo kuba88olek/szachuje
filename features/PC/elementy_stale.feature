@@ -11,9 +11,9 @@ Potrzeba biznesowa: Strona informacyjna agencji kreatywnej Szachuje przystosowan
     Wtedy powinienem w nagłówku zobaczyć logo firmy Szachuje
     Oraz w nagłówku powinienem widzieć menu serwisu zawierające następujące elementy
       | Nazwa         |
-      | Strona główna |
-      | O nas         |
-      | Kontakt       |
+      | STRONA GŁÓWNA |
+      | O NAS         |
+      | KONTAKT       |
 
   Scenariusz: Widoczność stopki strony
     Zakładając że otworzyłem "Stronę główną" serwisu

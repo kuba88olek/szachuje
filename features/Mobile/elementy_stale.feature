@@ -11,9 +11,9 @@ Potrzeba biznesowa: Strona informacyjna agencji kreatywnej Szachuje przystosowan
     Zakładając że otworzyłem "Stronę główną" serwisu
     Oraz w nagłówku powinienem widzieć menu serwisu zawierające następujące elementy
       | Nazwa         |
-      | Strona główna |
-      | O nas         |
-      | Kontakt       |
+      | STRONA GŁÓWNA |
+      | O NAS         |
+      | KONTAKT       |
     Oraz nie powinno być widoczne logo firmy
 
   @javascript
