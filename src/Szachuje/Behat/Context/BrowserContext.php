@@ -16,6 +16,9 @@ class BrowserContext extends RawMinkContext
         $this->browserHeight = $browserHeight;
     }
 
+    /**
+     * @BeforeScenario
+     */
     public function resizeBrowserWindow()
     {
         if ($this->getSession()->getDriver() instanceof Selenium2Driver) {
