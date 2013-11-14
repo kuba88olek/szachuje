@@ -5,17 +5,60 @@
     <title>{% block title %}{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block stylesheets %}
-    {% stylesheets
+        {% stylesheets
         'bundles/szachujeweb/css/bootstrap_grid.css'
-    filter='cssrewrite' %}
-    <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %}
+        'bundles/szachujeweb/css/style.css'
+        filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
 <body>
-<h1 id="logo" class="hidden-xs"><img src="{{ asset('bundles/szachujeweb/img/logo.png') }}" alt=""/></h1>
-{% block body %}{% endblock %}
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-5 hidden-xs">
+                <img class="" src="{{ asset('bundles/szachujeweb/img/logo.png') }}" alt="Logo" id="logo" />
+            </div>
+            <div class="col-md-6 col-sm-7 col-xs-12">
+                <nav>
+                    <ul>
+                        <li>{{ 'header.menu.main_page' | trans | upper }}</li>
+                        <li>{{ 'header.menu.about_us' | trans | upper }}</li>
+                        <li>{{ 'header.menu.contact' | trans | upper }}</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+{% block body %}
+    <div class="container">
+    </div>
+{% endblock %}
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <h1>Kontakt</h1>
+                <p>Szachuje agencja public relations<br>
+                    ul. Warszawska 1/2, 12-345 WARSZAWA</p>
+                <p>T: (+48) 12 345 678<br>
+                    E: biuro@szachuje.com</p>
+            </div>
+            <div class="col-md-6 col-sm-6 hidden-xs">
+                <nav>
+                    <ul>
+                        <li>{{ 'header.menu.main_page' | trans | lower }}</li>
+                        <li>{{ 'header.menu.about_us' | trans | lower }}</li>
+                        <li>{{ 'header.menu.contact' | trans | lower }}</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</footer>
 {% block javascripts %}{% endblock %}
 </body>
 </html>

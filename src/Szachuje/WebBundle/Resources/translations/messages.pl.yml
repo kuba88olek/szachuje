@@ -1,2 +1,13 @@
+header:
+  menu:
+    main_page: Strona główna
+    about_us: O nas
+    contact: Kontakt
+footer:
+  left:
+    title: Kontakt
+    first_part: <p>Szachuje agencja public relations<br>ul. Warszawska 1/2, 12-345 WARSZAWA</p>
+    second_part: <p>T: (+48) 12 345 678<br>E: biuro@szachuje.com</p>
+
 main_page:
     seo_title: Szachuje agencja kreatywna - strona główna
