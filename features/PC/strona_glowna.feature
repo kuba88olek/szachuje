@@ -27,35 +27,25 @@ Potrzeba biznesowa: Strona informacyjna firmy Szachuje przystosowana do przeglą
 
   Scenariusz: Widoczność elementów tekstowych strony głównej
     Zakładając że otworzyłem "Stronę główną" serwisu
-    Wtedy powinienem zobaczyć tekst
+    Wtedy powinienem zobaczyć tekst powitalny
     """
-    Już za sobą proces wdrożenia i określenia dalszych poczynań.
-    Każdy już zapewne zdążył zauważyć iż utworzenie komisji śledczej do wniosku,
-    iż usprawnienie systemu wymaga sprecyzowania i koledzy,
-    zakończenie tego projektu przedstawia interpretującą próbę sprawdzenia form oddziaływania.
-    Mając na zakres i unowocześniania dalszych poczynań.
+    Już za sobą proces wdrożenia i określenia dalszych poczynań. Każdy już zapewne zdążył zauważyć iż utworzenie komisji śledczej do wniosku, iż usprawnienie systemu wymaga sprecyzowania i koledzy, zakończenie tego projektu przedstawia interpretującą próbę sprawdzenia form oddziaływania. Mając na zakres i unowocześniania dalszych poczynań.
     """
     Oraz powinien być również widoczny tekst
     """
-    Tylko spokojnie. Nie chcę państwu niczego sugerować,
-    ale skoordynowanie pracy obu urzędów koliduje z powodu form oddziaływania.
-    Pomijając fakt, że wyeliminowanie korupcji pomaga w większym stopniu
-    tworzenie obecnej sytuacji. Koleżanki i miejsce szkolenia kadry odpowiadającego potrzebom.
-    Troska organizacji, a także wykorzystanie unijnych dotacji wymaga niezwykłej precyzji
-    w wypracowaniu dalszych kierunków postępowego wychowania.
-    Jednakowoż, konsultacja z powodu postaw uczestników wobec zadań stanowionych przez organizację.
+    Tylko spokojnie. Nie chcę państwu niczego sugerować, ale skoordynowanie pracy obu urzędów koliduje z powodu form oddziaływania. Pomijając fakt, że wyeliminowanie korupcji pomaga w większym stopniu tworzenie obecnej sytuacji.
     """
 
   Scenariusz: Widoczność działu aktualności
-    Zakładając że otworzyłem "Stronę główną" serwisu
-    I mam w bazie następujące aktualności
+    Zakładając że mam w bazie następujące aktualności
       | Tytuł              | Data dodania    | Treść                    |
       | Aktualność 1       | 2013-11-13      | Lorem ipsum Lorem ipsum  |
       | Aktualność 2       | 2013-11-11      | Lorem ipsum Lorem ipsum  |
       | Aktualność 3       | 2013-10-20      | Lorem ipsum Lorem ipsum  |
       | Aktualność 4       | 2013-10-01      | Lorem ipsum Lorem ipsum  |
+    I otworzyłem "Stronę główną" serwisu
     Wtedy w dziale aktualności powinienem zobaczyć "3" najnowsze wpisy z następującymi elementami
-      | Tytuł              | Data publikacji | Tekst                    |
+      | Tytuł              | Data publikacji | Treść                    |
       | Aktualność 1       | 2013-11-13      | Lorem ipsum Lorem ipsum  |
       | Aktualność 2       | 2013-11-11      | Lorem ipsum Lorem ipsum  |
       | Aktualność 3       | 2013-10-20      | Lorem ipsum Lorem ipsum  |
