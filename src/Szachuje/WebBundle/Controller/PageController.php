@@ -16,4 +16,22 @@ class PageController extends Controller
     {
         return array();
     }
+
+    /**
+     * @Route("/o-nas", name="szachuje_about_us")
+     * @Template()
+     */
+    public function aboutUsAction()
+    {
+        return array();
+    }
+
+    /**
+     * @Route("/kontakt", name="szachuje_contact")
+     * @Template()
+     */
+    public function contactAction()
+    {
+        return array();
+    }
 }

@@ -8,6 +8,7 @@ use Behat\Mink\Mink;
 use Behat\MinkExtension\Context\MinkAwareInterface;
 use SensioLabs\Behat\PageObjectExtension\Context\PageObjectContext;
 use Behat\Gherkin\Node\TableNode;
+use Behat\Behat\Exception\PendingException;
 
 class WebUserContext extends PageObjectContext implements MinkAwareInterface
 {
@@ -118,4 +119,85 @@ class WebUserContext extends PageObjectContext implements MinkAwareInterface
     {
         expect($this->getElement('Footer')->isMenuVisible('mobile'))->toBe(false);
     }
+
+    /**
+     * @Given /^w nagłówku element menu "([^"]*)" powininen być elementem aktywnym$/
+     */
+    public function wNaglowkuElementMenuPowininenBycElementemAktywnym($menuElement)
+    {
+        expect($this->getPage('Strona Glowna')->isHeaderMenuElementActive($menuElement))->toBe(true);
+    }
+
+    /**
+     * @Given /^element menu "([^"]*)" w stopce powinien być aktywny$/
+     */
+    public function elementMenuWStopcePowinienBycAktywny($menuElement)
+    {
+        expect($this->getPage('Strona Glowna')->isFooterMenuElementActive($menuElement))->toBe(true);
+    }
+
+    /**
+     * @Given /^powinienem zobaczyć nagłówek "([^"]*)"$/
+     */
+    public function powinienemZobaczycNaglowek($arg1)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Given /^powinienem zobaczyć tekst powitalny$/
+     */
+    public function powinienemZobaczycTekstPowitalny()
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Given /^powinienem widzieć grafikę przedstawiąjącą działalność firmy$/
+     */
+    public function powinienemWidziecGrafikePrzedstawiajacaDzialalnoscFirmy()
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Given /^powinienem zobaczyć dział "([^"]*)" z najnowszymi aktualnościami$/
+     */
+    public function powinienemZobaczycDzialZNajnowszymiAktualnosciami($arg1)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Given /^powinien być również widoczny tekst$/
+     */
+    public function powinienBycRowniezWidocznyTekst(PyStringNode $string)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Given /^że mam w bazie następujące aktualności$/
+     */
+    public function zeMamWBazieNastepujaceAktualnosci(TableNode $table)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Given /^otworzyłem "([^"]*)" serwisu$/
+     */
+    public function otworzylemSerwisu($arg1)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Given /^w dziale aktualności powinienem zobaczyć "([^"]*)" najnowsze wpisy z następującymi elementami$/
+     */
+    public function wDzialeAktualnosciPowinienemZobaczycNajnowszeWpisyZNastepujacymiElementami($arg1, TableNode $table)
+    {
+        throw new PendingException();
+    }
+
 }

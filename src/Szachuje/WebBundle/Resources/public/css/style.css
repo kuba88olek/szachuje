@@ -1,14 +1,14 @@
 body { font-family: arial, sans-serif; font-size: 13px; color: #313131; }
-nav { float: right; }
-nav ul { list-style: none; }
+nav ul { list-style: none; float: right;}
 nav ul li { display: inline; }
-
-header { background: url(../img/przeplot.png) repeat; padding: 20px 0px 20px 0px; }
-header nav { margin-top: 60px; }
-header nav ul li { font-size: 18px; padding-left: 15px; }
-footer { background: url(../img/przeplot_footer.png) repeat; padding: 20px 0px 20px 0px; }
+nav ul li a { color: #313131; outline: none; padding: 5px 5px 5px 5px; }
+nav ul li a:hover { text-decoration: none; background-color: #e80041; color: #ffffff !important; }
+nav ul li.current a { color: #e80041; }
+header#main-header { background: url(../img/przeplot.png) repeat; padding-top: 15px; }
+header#main-header nav { margin-top: 60px; }
+header#main-header nav ul li { font-size: 18px; padding-left: 15px; }
+footer { background: url(../img/przeplot_footer.png) repeat; }
 footer nav ul li { padding: 0px 5px 0px 5px; }
 
 h1 { font-size: 30px; }
 h2 { font-size: 18px; }
-

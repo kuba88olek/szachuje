@@ -11,7 +11,7 @@ Potrzeba biznesowa: Strona informacyjna agencji kreatywnej Szachuje przystosowan
     Zakładając że otworzyłem "Stronę główną" serwisu
     Wtedy w nagłówku element menu "STRONA GŁÓWNA" powininen być elementem aktywnym
 
-  @javascript
+  @wip @javascript
   Scenariusz: Widoczność elementów strony głównej
     Zakładając że otworzyłem "Stronę główną" serwisu
     Wtedy powinienem zobaczyć nagłówek "Witamy na naszej stronie"
@@ -19,7 +19,7 @@ Potrzeba biznesowa: Strona informacyjna agencji kreatywnej Szachuje przystosowan
     Oraz nie powinienem widzieć grafiki przedstawiąjącą działalność firmy
     I powinienem zobaczyć dział "Aktualności" z najnowszymi aktualnościami
 
-  @javascript
+  @wip @javascript
   Scenariusz: Widoczność elementów tekstowych strony głównej
     Zakładając że otworzyłem "Stronę główną" serwisu
     Wtedy powinienem zobaczyć tekst powitalny
@@ -31,7 +31,7 @@ Potrzeba biznesowa: Strona informacyjna agencji kreatywnej Szachuje przystosowan
     Tylko spokojnie. Nie chcę państwu niczego sugerować, ale skoordynowanie pracy obu urzędów koliduje z powodu form oddziaływania. Pomijając fakt, że wyeliminowanie korupcji pomaga w większym stopniu tworzenie obecnej sytuacji.
     """
 
-  @javascript
+  @wip @javascript
   Scenariusz: Widoczność działu aktualności
     Zakładając że mam w bazie następujące aktualności
       | Tytuł              | Data dodania    | Treść                    |
