@@ -9,13 +9,26 @@ use Behat\MinkExtension\Context\MinkAwareInterface;
 use SensioLabs\Behat\PageObjectExtension\Context\PageObjectContext;
 use Behat\Gherkin\Node\TableNode;
 use Behat\Behat\Exception\PendingException;
+use Behat\Symfony2Extension\Context\KernelAwareInterface;
+use Symfony\Component\HttpKernel\KernelInterface;
+use Doctrine\ORM\Tools\SchemaTool;
 
-class WebUserContext extends PageObjectContext implements MinkAwareInterface
+class WebUserContext extends PageObjectContext implements MinkAwareInterface, KernelAwareInterface
 {
     /**
      * @var Mink
      */
     protected $mink;
+
+    /**
+     * @var kernel
+     */
+    private $kernel;
+
+    public function setKernel(KernelInterface $kernel)
+    {
+        $this->kernel = $kernel;
+    }
 
     public function setMink(Mink $mink)
     {
@@ -24,6 +37,29 @@ class WebUserContext extends PageObjectContext implements MinkAwareInterface
 
     public function setMinkParameters(array $parameters)
     {
+    }
+
+    /**
+     * @BeforeScenario
+     */
+    public function createDatabase()
+    {
+        $this->deleteDatabaseIfExist();
+        $metadata = $this->kernel->getContainer()->get('doctrine')->getManager()->getMetadataFactory()->getAllMetadata();
+        $tool = new SchemaTool($this->kernel->getContainer()->get('doctrine')->getManager());
+        $tool->createSchema($metadata);
+    }
+
+    /**
+     * @AfterScenario
+     */
+    public function deleteDatabaseIfExist()
+    {
+        $dbFilePath = $this->kernel->getRootDir() . '/szachuje.db';
+
+        if (file_exists($dbFilePath)) {
+            unlink($dbFilePath);
+        }
     }
 
     /**
