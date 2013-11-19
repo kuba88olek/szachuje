@@ -12,6 +12,8 @@ use Behat\Behat\Exception\PendingException;
 use Behat\Symfony2Extension\Context\KernelAwareInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Doctrine\ORM\Tools\SchemaTool;
+use Szachuje\WebBundle\Entity;
+use DateTime;
 
 class WebUserContext extends PageObjectContext implements MinkAwareInterface, KernelAwareInterface
 {
@@ -64,6 +66,7 @@ class WebUserContext extends PageObjectContext implements MinkAwareInterface, Ke
 
     /**
      * @Given /^że otworzyłem "([^"]*)" serwisu$/
+     * @Given /^otworzyłem "([^"]*)" serwisu$/
      */
     public function zeOtworzylemSerwisu($pageName)
     {
@@ -223,17 +226,17 @@ class WebUserContext extends PageObjectContext implements MinkAwareInterface, Ke
     /**
      * @Given /^że mam w bazie następujące aktualności$/
      */
-    public function zeMamWBazieNastepujaceAktualnosci(TableNode $table)
+    public function zeMamWBazieNastepujaceAktualnosci(TableNode $newsList)
     {
-        throw new PendingException();
-    }
-
-    /**
-     * @Given /^otworzyłem "([^"]*)" serwisu$/
-     */
-    public function otworzylemSerwisu($arg1)
-    {
-        throw new PendingException();
+        $manager = $this->kernel->getContainer()->get('doctrine')->getManager();
+        foreach ($newsList->getHash() as $oneNews) {
+            $news = new Entity\News();
+            $news->setTitle($oneNews['Tytuł']);
+            $news->setDateAdd(new DateTime($oneNews['Data dodania']));
+            $news->setContent($oneNews['Treść']);
+            $manager->persist($news);
+        }
+        $manager->flush();
     }
 
     /**
@@ -241,7 +244,7 @@ class WebUserContext extends PageObjectContext implements MinkAwareInterface, Ke
      */
     public function wDzialeAktualnosciPowinienemZobaczycNajnowszeWpisyZNastepujacymiElementami($arg1, TableNode $table)
     {
-        throw new PendingException();
+        
     }
 
 }

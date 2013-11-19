@@ -31,7 +31,7 @@ Potrzeba biznesowa: Strona informacyjna agencji kreatywnej Szachuje przystosowan
     Tylko spokojnie. Nie chcę państwu niczego sugerować, ale skoordynowanie pracy obu urzędów koliduje z powodu form oddziaływania. Pomijając fakt, że wyeliminowanie korupcji pomaga w większym stopniu tworzenie obecnej sytuacji.
     """
 
-  @wip @javascript
+  @javascript
   Scenariusz: Widoczność działu aktualności
     Zakładając że mam w bazie następujące aktualności
       | Tytuł              | Data dodania    | Treść                    |

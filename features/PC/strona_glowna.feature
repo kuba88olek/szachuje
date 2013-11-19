@@ -36,7 +36,7 @@ Potrzeba biznesowa: Strona informacyjna firmy Szachuje przystosowana do przeglą
     Tylko spokojnie. Nie chcę państwu niczego sugerować, ale skoordynowanie pracy obu urzędów koliduje z powodu form oddziaływania. Pomijając fakt, że wyeliminowanie korupcji pomaga w większym stopniu tworzenie obecnej sytuacji.
     """
 
-  @wip
+
   Scenariusz: Widoczność działu aktualności
     Zakładając że mam w bazie następujące aktualności
       | Tytuł              | Data dodania    | Treść                    |
