@@ -29,6 +29,13 @@
         <div class="col-md-6 col-xs-12">
             <section id="news">
                 <header><h1>Aktualności</h1></header>
+                {% for one in news %}
+                    <article class="one-news hidden-xs" id="{{ one.dateAdd.date | date("Y-m-d") }}">
+                        <p class="title">{{ one.title }}</p>
+                        <p class="date-add">data przesłania: {{ one.dateAdd.date | date("Y-m-d") }}</p>
+                        <p class="content">{{ one.content }}</p>
+                    </article>
+                {% endfor %}
             </section>
         </div>
     </div>

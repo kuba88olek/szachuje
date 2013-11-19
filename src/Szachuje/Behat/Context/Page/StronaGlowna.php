@@ -54,4 +54,32 @@ class StronaGlowna extends Page
         $secondContent = $this->find('css', 'section p#second-text');
         return $secondContent->getText();
     }
+
+    public function isNewsOnHomepage($oneNews)
+    {
+
+        $container = $this->find('css', sprintf('section#news article#%s', $oneNews['Data publikacji']));
+
+        if (!$container->has('css', sprintf('p.title:contains("%s")', $oneNews['Tytuł']))) {
+            return false;
+        }
+        if (!$container->has('css', sprintf('p.date-add:contains("%s")', $oneNews['Data publikacji']))) {
+            return false;
+        }
+        if ($oneNews['Treść'] == 'Niewidoczny') {
+            if ($container->find('css', 'p.content')->isVisible()) {
+                return false;
+            }
+        } else {
+            if ($container->find('css', 'p.content')->getText() != $oneNews['Treść']) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public function getNewsCount()
+    {
+        return count($this->findAll('css', 'article.one-news'));
+    }
 }

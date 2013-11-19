@@ -242,9 +242,13 @@ class WebUserContext extends PageObjectContext implements MinkAwareInterface, Ke
     /**
      * @Given /^w dziale aktualności powinienem zobaczyć "([^"]*)" najnowsze wpisy z następującymi elementami$/
      */
-    public function wDzialeAktualnosciPowinienemZobaczycNajnowszeWpisyZNastepujacymiElementami($arg1, TableNode $table)
+    public function wDzialeAktualnosciPowinienemZobaczycNajnowszeWpisyZNastepujacymiElementami($count, TableNode $newsList)
     {
-        
+        expect($this->getPage('Strona Glowna')->getNewsCount())->toBe((integer) $count);
+        foreach($newsList->getHash() as $oneNews)
+        {
+            expect($this->getPage('Strona Glowna')->isNewsOnHomepage($oneNews))->toBe(true);
+        }
     }
 
 }
