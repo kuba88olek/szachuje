@@ -1,3 +1,35 @@
 {% extends 'SzachujeWebBundle::base.html.twig' %}
 
 {% block title %}{{ 'main_page.seo_title'|trans }}{% endblock title %}
+
+{% block body %}
+    <div class="container">
+        <div class="col-md-6 col-xs-12">
+            <section id="welcome">
+                <article>
+                    <header><h1>Witamy na naszej stronie</h1></header>
+                    <p id="welcome-text">Już za sobą proces wdrożenia i określenia dalszych poczynań. Każdy już zapewne zdążył zauważyć iż utworzenie komisji śledczej do wniosku, iż usprawnienie systemu wymaga sprecyzowania i koledzy, zakończenie tego projektu przedstawia interpretującą próbę sprawdzenia form oddziaływania. Mając na zakres i unowocześniania dalszych poczynań.</p>
+                    <img alt="firm-image" src="{{ asset('bundles/szachujeweb/img/szachuje_img.png') }}" id="firm-img" class="hidden-xs" />
+                    <p id="second-text">Tylko spokojnie. Nie chcę państwu niczego sugerować, ale skoordynowanie pracy obu urzędów koliduje z powodu form oddziaływania. Pomijając fakt, że wyeliminowanie korupcji pomaga w większym stopniu tworzenie obecnej sytuacji.</p>
+                    <p id="welcome-mobile-text" class="hidden-xs">Już za sobą proces wdrożenia i określenia dalszych poczynań.
+                        Każdy już zapewne zdążył zauważyć iż utworzenie komisji śledczej do wniosku,
+                        iż usprawnienie systemu wymaga sprecyzowania i koledzy,
+                        zakończenie tego projektu przedstawia interpretującą próbę sprawdzenia form oddziaływania.
+                        Mając na zakres i unowocześniania dalszych poczynań.
+                        Tylko spokojnie. Nie chcę państwu niczego sugerować,
+                        ale skoordynowanie pracy obu urzędów koliduje z powodu form oddziaływania.
+                        Pomijając fakt, że wyeliminowanie korupcji pomaga w większym stopniu
+                        tworzenie obecnej sytuacji. Koleżanki i miejsce szkolenia kadry odpowiadającego potrzebom.
+                        Troska organizacji, a także wykorzystanie unijnych dotacji wymaga niezwykłej precyzji
+                        w wypracowaniu dalszych kierunków postępowego wychowania.
+                        Jednakowoż, konsultacja z powodu postaw uczestników wobec zadań stanowionych przez organizację.</p>
+                </article>
+            </section>
+        </div>
+        <div class="col-md-6 col-xs-12">
+            <section id="news">
+                <header><h1>Aktualności</h1></header>
+            </section>
+        </div>
+    </div>
+{% endblock %}

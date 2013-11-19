@@ -11,7 +11,7 @@ Potrzeba biznesowa: Strona informacyjna agencji kreatywnej Szachuje przystosowan
     Zakładając że otworzyłem "Stronę główną" serwisu
     Wtedy w nagłówku element menu "STRONA GŁÓWNA" powininen być elementem aktywnym
 
-  @wip @javascript
+  @javascript
   Scenariusz: Widoczność elementów strony głównej
     Zakładając że otworzyłem "Stronę główną" serwisu
     Wtedy powinienem zobaczyć nagłówek "Witamy na naszej stronie"
@@ -19,7 +19,7 @@ Potrzeba biznesowa: Strona informacyjna agencji kreatywnej Szachuje przystosowan
     Oraz nie powinienem widzieć grafiki przedstawiąjącą działalność firmy
     I powinienem zobaczyć dział "Aktualności" z najnowszymi aktualnościami
 
-  @wip @javascript
+  @javascript
   Scenariusz: Widoczność elementów tekstowych strony głównej
     Zakładając że otworzyłem "Stronę główną" serwisu
     Wtedy powinienem zobaczyć tekst powitalny

@@ -139,9 +139,9 @@ class WebUserContext extends PageObjectContext implements MinkAwareInterface
     /**
      * @Given /^powinienem zobaczyć nagłówek "([^"]*)"$/
      */
-    public function powinienemZobaczycNaglowek($arg1)
+    public function powinienemZobaczycNaglowek($headerText)
     {
-        throw new PendingException();
+        expect($this->getPage('Strona Glowna')->hasHeaderText($headerText))->toBe(true);
     }
 
     /**
@@ -149,7 +149,7 @@ class WebUserContext extends PageObjectContext implements MinkAwareInterface
      */
     public function powinienemZobaczycTekstPowitalny()
     {
-        throw new PendingException();
+        expect($this->getPage('Strona Glowna')->hasWelcomeContent())->toBe(true);
     }
 
     /**
@@ -157,23 +157,31 @@ class WebUserContext extends PageObjectContext implements MinkAwareInterface
      */
     public function powinienemWidziecGrafikePrzedstawiajacaDzialalnoscFirmy()
     {
-        throw new PendingException();
+        expect($this->getPage('Strona Glowna')->isImageVisible('pc'))->toBe(true);
     }
 
     /**
      * @Given /^powinienem zobaczyć dział "([^"]*)" z najnowszymi aktualnościami$/
      */
-    public function powinienemZobaczycDzialZNajnowszymiAktualnosciami($arg1)
+    public function powinienemZobaczycDzialZNajnowszymiAktualnosciami($title)
     {
-        throw new PendingException();
+        expect($this->getPage('Strona Glowna')->hasHeaderText($title))->toBe(true);
     }
 
     /**
      * @Given /^powinien być również widoczny tekst$/
      */
-    public function powinienBycRowniezWidocznyTekst(PyStringNode $string)
+    public function powinienBycRowniezWidocznyTekst(PyStringNode $content)
     {
-        throw new PendingException();
+        expect($this->getPage('Strona Glowna')->getSecondText())->toBe((string) $content);
+    }
+
+    /**
+     * @Given /^nie powinienem widzieć grafiki przedstawiąjącą działalność firmy$/
+     */
+    public function niePowinienemWidziecGrafikiPrzedstawiajacaDzialalnoscFirmy()
+    {
+        expect($this->getPage('Strona Glowna')->isImageVisible('mobile'))->toBe(false);
     }
 
     /**

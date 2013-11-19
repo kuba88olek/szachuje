@@ -18,7 +18,6 @@ Potrzeba biznesowa: Strona informacyjna firmy Szachuje przystosowana do przeglą
     Wtedy w nagłówku element menu "STRONA GŁÓWNA" powininen być elementem aktywnym
     Oraz element menu "strona główna" w stopce powinien być aktywny
 
-  @wip
   Scenariusz: Widoczność elementów strony głównej
     Zakładając że otworzyłem "Stronę główną" serwisu
     Wtedy powinienem zobaczyć nagłówek "Witamy na naszej stronie"
@@ -26,7 +25,6 @@ Potrzeba biznesowa: Strona informacyjna firmy Szachuje przystosowana do przeglą
     Oraz powinienem widzieć grafikę przedstawiąjącą działalność firmy
     I powinienem zobaczyć dział "Aktualności" z najnowszymi aktualnościami
 
-  @wip
   Scenariusz: Widoczność elementów tekstowych strony głównej
     Zakładając że otworzyłem "Stronę główną" serwisu
     Wtedy powinienem zobaczyć tekst powitalny
