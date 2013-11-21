@@ -247,7 +247,7 @@ class WebUserContext extends PageObjectContext implements MinkAwareInterface, Ke
         expect($this->getPage('Strona Glowna')->getNewsCount())->toBe((integer) $count);
         foreach($newsList->getHash() as $oneNews)
         {
-            expect($this->getPage('Strona Glowna')->isNewsOnHomepage($oneNews))->toBe(true);
+            expect($this->getPage('Strona Glowna')->isNewsOnHomepage($oneNews['Tytuł'], $oneNews['Data publikacji'], $oneNews['Treść']))->toBe(true);
         }
     }
 
