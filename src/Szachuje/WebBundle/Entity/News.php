@@ -121,4 +121,14 @@ class News
     {
         return $this->content;
     }
+
+    /**
+     * To String
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
 }
