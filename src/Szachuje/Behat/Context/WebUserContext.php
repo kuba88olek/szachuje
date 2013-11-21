@@ -9,6 +9,7 @@ use Behat\Mink\Mink;
 use Behat\MinkExtension\Context\MinkAwareInterface;
 use Behat\Symfony2Extension\Context\KernelAwareInterface;
 use Doctrine\Common\DataFixtures\Purger\ORMPurger;
+use Doctrine\ORM\Tools\SchemaTool;
 use SensioLabs\Behat\PageObjectExtension\Context\PageObjectContext;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Szachuje\WebBundle\Entity\News;
@@ -30,15 +31,30 @@ class WebUserContext extends PageObjectContext implements KernelAwareInterface, 
      */
     protected $minkParameters;
 
-    /**
-     * @BeforeScenario
-     */
-    public function purgeDatabase()
+    public function getDoctrineManager()
     {
-        $entityManager = $this->kernel->getContainer()->get('doctrine.orm.entity_manager');
+        return $this->kernel->getContainer()->get('doctrine.orm.entity_manager');
+    }
 
-        $purger = new ORMPurger($entityManager);
-        $purger->purge();
+    /**
+     * @BeforeScenario @db
+     */
+    public function createDatabase()
+    {
+        $manager = $this->getDoctrineManager();
+        $metadata = $manager->getMetadataFactory()->getAllMetadata();
+        $tool = new SchemaTool($manager);
+        $tool->createSchema($metadata);
+    }
+
+    /**
+     * @AfterScenario @db
+     */
+    public function dropDatabase()
+    {
+        $manager = $this->getDoctrineManager();
+        $tool = new SchemaTool($manager);
+        $tool->dropDatabase();
     }
 
     public function setKernel(KernelInterface $kernel)
@@ -99,7 +115,7 @@ class WebUserContext extends PageObjectContext implements KernelAwareInterface, 
      */
     public function zeSaZdefiniowaneAktualnosci(TableNode $table)
     {
-        $em = $this->kernel->getContainer()->get('doctrine.orm.entity_manager');
+        $em = $this->getDoctrineManager();
 
         foreach ($table->getHash() as $row) {
             $entity = new News();

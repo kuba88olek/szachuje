@@ -1,6 +1,6 @@
 # language: pl
 
-@pc
+@pc @db
 Potrzeba biznesowa: Strona informacyjna firmy Szachuje przystosowana do przeglądania w rozdzielczości 960x800px lub wyższej
   W celu poznania profilu firmy Szachuje oraz zakresu jej działań
   Jako użytkownik szukający informacji na temat firmy
@@ -22,7 +22,7 @@ Potrzeba biznesowa: Strona informacyjna firmy Szachuje przystosowana do przeglą
     """
 
   Scenariusz: Wyświetlanie aktualności
-    Wtedy powinienem zobaczyć nagłowek "Aktualności"
+    Wtedy powinienem zobaczyć nagłowek prawej kolumny "Aktualności"
     Oraz powinienem zobaczyć aktualności:
       | Nazwa                                    | Data       | Treść                        |
       | Utworzenie komisji śledczej.             | 2013-11-04 | W związku z szerokim aktywem |
@@ -30,7 +30,7 @@ Potrzeba biznesowa: Strona informacyjna firmy Szachuje przystosowana do przeglą
       | Drogi Marszałku, Wysoka Izbo. PKB rośnie | 2013-11-02 | Nie zapominajmy jednak       |
 
   Scenariusz: Wyświetlanie treści strony
-    Wtedy powinienem zobaczyć nagłowek "Witamy na naszej stronie"
+    Wtedy powinienem zobaczyć nagłowek strony "Witamy na naszej stronie"
     Oraz powinienem zobaczyć grafikę obrazującą działalność firmy
     Oraz powinienem zobaczyć treść strony:
       """

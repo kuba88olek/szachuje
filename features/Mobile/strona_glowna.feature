@@ -1,6 +1,6 @@
 # language: pl
 
-@mobile @javascript
+@mobile @javascript @db
 Potrzeba biznesowa: Strona informacyjna agencji kreatywnej Szachuje przystosowana do przeglądania na telefonie
   W celu poznania profilu firmy Szachuje oraz zakresu jej działań
   Jako użytkownik szukający informacji na temat firmy
