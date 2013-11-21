@@ -113,21 +113,23 @@ class WebUserContext extends PageObjectContext implements KernelAwareInterface, 
     }
 
     /**
-     * @Given /^powinienem zobaczyć nagłowek "([^"]*)"$/
+     * @Given /^powinienem zobaczyć nagłowek strony "([^"]*)"$/
      */
-    public function powinienemZobaczycNaglowek($name)
+    public function powinienemZobaczycNaglowekStrony($name)
     {
-        $headers = $this->mink->getSession()->getPage('Strona główna')->findAll('css', 'h1,h2,h3,h4,h5,h6');
+        $header = $this->mink->getSession()->getPage()->find('css', '#page-header');
+        expect($header)->toNotBeNull();
+        expect($header->getText())->toBe($name);
+    }
 
-        expect($headers)->toNotBeNull();
-
-        foreach ($headers as $header) {
-            if ($header->getText() == $name) {
-                return;
-            }
-        }
-
-        throw new \Exception();
+    /**
+     * @Given /^powinienem zobaczyć nagłowek prawej kolumny "([^"]*)"$/
+     */
+    public function powinienemZobaczycNaglowekPrawejKolumny($name)
+    {
+        $header = $this->mink->getSession()->getPage()->find('css', '#column-right-header');
+        expect($header)->toNotBeNull();
+        expect($header->getText())->toBe($name);
     }
 
     /**
@@ -135,25 +137,15 @@ class WebUserContext extends PageObjectContext implements KernelAwareInterface, 
      */
     public function powinienemZobaczycAktualnosci(TableNode $table)
     {
-        $news = $this->mink->getSession()->getPage('Strona główna')->findAll('css', 'article');
+        $articles = $this->getPage('Strona glowna')->getElement('Aktualnosci');
 
-        expect($news)->shouldHaveCount(count($table->getHash()));
+        expect($articles->getArticlesCount())->toBe(count($table->getHash()));
 
-        $pageArticle = reset($news);
-        foreach ($table->getHash() as $row) {
-            $articleName = $pageArticle->find('css', '.name');
-            expect($articleName)->toNotBeNull();
-            expect($articleName->getText())->toBe($row['Nazwa']);
-
-            $articleDate = $pageArticle->find('css', '.date');
-            expect($articleDate)->toNotBeNull();
-            expect($articleDate->getText())->toBe($row['Data']);
-
-            $articleContent = $pageArticle->find('css', '.content');
-            expect($articleContent)->toNotBeNull();
-            expect($articleContent->getText())->toBe($row['Treść']);
-
-            $pageArticle = next($news);
+        foreach ($table->getHash() as $index => $row) {
+            $articleIndex = $index+1;
+            expect($articles->getArticleName($articleIndex))->toBe($row['Nazwa']);
+            expect($articles->getArticleDate($articleIndex))->toBe($row['Data']);
+            expect($articles->getArticleContent($articleIndex))->toBe($row['Treść']);
         }
     }
 

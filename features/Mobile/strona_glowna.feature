@@ -19,7 +19,7 @@ Potrzeba biznesowa: Strona informacyjna agencji kreatywnej Szachuje przystosowan
     Wtedy logo firmy Szachuje nie powinno być widoczne
 
   Scenariusz: Wyświetlanie aktualności
-    Wtedy powinienem zobaczyć nagłowek "Aktualności"
+    Wtedy powinienem zobaczyć nagłowek prawej kolumny "Aktualności"
     Oraz powinienem zobaczyć nagłówki aktualności:
       | Nazwa                                    | Data       |
       | Utworzenie komisji śledczej.             | 2013-11-04 |
@@ -27,7 +27,7 @@ Potrzeba biznesowa: Strona informacyjna agencji kreatywnej Szachuje przystosowan
       | Drogi Marszałku, Wysoka Izbo. PKB rośnie | 2013-11-02 |
 
   Scenariusz: Wyświetlanie treści strony
-    Wtedy powinienem zobaczyć nagłowek "Witamy na naszej stronie"
+    Wtedy powinienem zobaczyć nagłowek strony "Witamy na naszej stronie"
     Oraz grafikę obrazującą działalność firmy nie powinna być widoczna
     Oraz powinienem zobaczyć treść strony:
       """
