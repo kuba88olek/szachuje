@@ -31,4 +31,9 @@ class Header extends Element
     {
         return $this->has('css',  sprintf('nav ul li:contains("%s")', $element));
     }
+
+    public function isMenuElementActive($menuElement)
+    {
+        return $this->find('css',  sprintf('nav ul li:contains("%s")', $menuElement))->hasClass('current');
+    }
 }

@@ -40,4 +40,9 @@ class Footer extends Element
                 throw new Exception("Browser type not valid");
         }
     }
+
+    public function isMenuElementActive($menuElement)
+    {
+        return $this->find('css',  sprintf('nav ul li:contains("%s")', $menuElement))->hasClass('current');
+    }
 }
