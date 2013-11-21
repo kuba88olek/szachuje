@@ -1,6 +1,6 @@
 # language: pl
 
-@mobile
+@mobile @javascript
 Potrzeba biznesowa: Strona informacyjna agencji kreatywnej Szachuje przystosowana do przeglądania na telefonie
   W celu poznania profilu firmy Szachuje oraz zakresu jej działań
   Jako użytkownik szukający informacji na temat firmy
@@ -15,13 +15,12 @@ Potrzeba biznesowa: Strona informacyjna agencji kreatywnej Szachuje przystosowan
       | Rukturyzacja przedsiębiorstwa            | 2013-11-03 | Systemu wymaga sprecyzowania |
     Oraz że otworzyłem "Stronę główną" serwisu
 
-  @javascript
   Scenariusz: Ukrycie zbędnych elementów strony głównej w wersji mobilnej
     Wtedy logo firmy Szachuje nie powinno być widoczne
 
   Scenariusz: Wyświetlanie aktualności
     Wtedy powinienem zobaczyć nagłowek "Aktualności"
-    Oraz zobaczyć aktualności:
+    Oraz powinienem zobaczyć nagłówki aktualności:
       | Nazwa                                    | Data       |
       | Utworzenie komisji śledczej.             | 2013-11-04 |
       | Rukturyzacja przedsiębiorstwa            | 2013-11-03 |
@@ -29,6 +28,7 @@ Potrzeba biznesowa: Strona informacyjna agencji kreatywnej Szachuje przystosowan
 
   Scenariusz: Wyświetlanie treści strony
     Wtedy powinienem zobaczyć nagłowek "Witamy na naszej stronie"
+    Oraz grafikę obrazującą działalność firmy nie powinna być widoczna
     Oraz powinienem zobaczyć treść strony:
       """
       Nie zapominajmy jednak, że zmiana przestarzałego systemu powszechnego uczestnictwa. W związku z szerokim aktywem

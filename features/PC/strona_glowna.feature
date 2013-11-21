@@ -23,7 +23,7 @@ Potrzeba biznesowa: Strona informacyjna firmy Szachuje przystosowana do przeglą
 
   Scenariusz: Wyświetlanie aktualności
     Wtedy powinienem zobaczyć nagłowek "Aktualności"
-    Oraz zobaczyć aktualności:
+    Oraz powinienem zobaczyć aktualności:
       | Nazwa                                    | Data       | Treść                        |
       | Utworzenie komisji śledczej.             | 2013-11-04 | W związku z szerokim aktywem |
       | Rukturyzacja przedsiębiorstwa            | 2013-11-03 | Systemu wymaga sprecyzowania |
@@ -31,7 +31,7 @@ Potrzeba biznesowa: Strona informacyjna firmy Szachuje przystosowana do przeglą
 
   Scenariusz: Wyświetlanie treści strony
     Wtedy powinienem zobaczyć nagłowek "Witamy na naszej stronie"
-    Oraz powinienem zobaczyć obraz "/img/obraz1.png":
+    Oraz powinienem zobaczyć grafikę obrazującą działalność firmy
     Oraz powinienem zobaczyć treść strony:
       """
       Nie zapominajmy jednak, że zmiana przestarzałego systemu powszechnego uczestnictwa. W związku z szerokim aktywem
