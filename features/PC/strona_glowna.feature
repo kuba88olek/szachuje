@@ -7,7 +7,13 @@ Potrzeba biznesowa: Strona informacyjna firmy Szachuje przystosowana do przeglą
   Chciałbym móc przeglądnąć stronę firmy na ekranie o rozdzielczości co namniej 960x800px
 
   Założenia:
-    Zakładając że otworzyłem "Stronę główną" serwisu
+    Zakładając że są zdefiniowane aktualności:
+      | Nazwa                                    | Data       | Treść                        |
+      | Drogi Marszałku, Wysoka Izbo. PKB rośnie | 2013-11-02 | Nie zapominajmy jednak       |
+      | Utworzenie komisji śledczej.             | 2013-11-04 | W związku z szerokim aktywem |
+      | Unijne dodacje                           | 2013-11-01 | Dalszy rozwój różnych form   |
+      | Rukturyzacja przedsiębiorstwa            | 2013-11-03 | Systemu wymaga sprecyzowania |
+    Oraz że otworzyłem "Stronę główną" serwisu
 
   Scenariusz: Otworzenie strony głównej serwisu
     Wtedy na karcie w przeglądarce powinienem zobaczyć następujący tytuł
@@ -18,10 +24,10 @@ Potrzeba biznesowa: Strona informacyjna firmy Szachuje przystosowana do przeglą
   Scenariusz: Wyświetlanie aktualności
     Wtedy powinienem zobaczyć nagłowek "Aktualności"
     Oraz zobaczyć aktualności:
-      | Nazwa                                    |
-      | Drogi Marszałku, Wysoka Izbo. PKB rośnie |
-      | Utworzenie komisji śledczej.             |
-      | Drogi Marszałku, Wysoka Izbo. PKB rośnie |
+      | Nazwa                                    | Data       | Treść                        |
+      | Utworzenie komisji śledczej.             | 2013-11-04 | W związku z szerokim aktywem |
+      | Rukturyzacja przedsiębiorstwa            | 2013-11-03 | Systemu wymaga sprecyzowania |
+      | Drogi Marszałku, Wysoka Izbo. PKB rośnie | 2013-11-02 | Nie zapominajmy jednak       |
 
   Scenariusz: Wyświetlanie treści strony
     Wtedy powinienem zobaczyć nagłowek "Witamy na naszej stronie"

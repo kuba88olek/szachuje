@@ -7,7 +7,13 @@ Potrzeba biznesowa: Strona informacyjna agencji kreatywnej Szachuje przystosowan
   Chciałbym móc przeglądnąć stronę firmy na telefonie
 
   Założenia:
-    Zakładając że otworzyłem "Stronę główną" serwisu
+    Zakładając że są zdefiniowane aktualności:
+      | Nazwa                                    | Data       | Treść                        |
+      | Drogi Marszałku, Wysoka Izbo. PKB rośnie | 2013-11-02 | Nie zapominajmy jednak       |
+      | Utworzenie komisji śledczej.             | 2013-11-04 | W związku z szerokim aktywem |
+      | Unijne dodacje                           | 2013-11-01 | Dalszy rozwój różnych form   |
+      | Rukturyzacja przedsiębiorstwa            | 2013-11-03 | Systemu wymaga sprecyzowania |
+    Oraz że otworzyłem "Stronę główną" serwisu
 
   @javascript
   Scenariusz: Ukrycie zbędnych elementów strony głównej w wersji mobilnej
@@ -16,10 +22,10 @@ Potrzeba biznesowa: Strona informacyjna agencji kreatywnej Szachuje przystosowan
   Scenariusz: Wyświetlanie aktualności
     Wtedy powinienem zobaczyć nagłowek "Aktualności"
     Oraz zobaczyć aktualności:
-      | Nazwa                                    |
-      | Drogi Marszałku, Wysoka Izbo. PKB rośnie |
-      | Utworzenie komisji śledczej.             |
-      | Drogi Marszałku, Wysoka Izbo. PKB rośnie |
+      | Nazwa                                    | Data       |
+      | Utworzenie komisji śledczej.             | 2013-11-04 |
+      | Rukturyzacja przedsiębiorstwa            | 2013-11-03 |
+      | Drogi Marszałku, Wysoka Izbo. PKB rośnie | 2013-11-02 |
 
   Scenariusz: Wyświetlanie treści strony
     Wtedy powinienem zobaczyć nagłowek "Witamy na naszej stronie"
