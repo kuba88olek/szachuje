@@ -18,27 +18,33 @@ class Aktualnosci extends Element
     {
         $element = $this->find('css', sprintf('article:nth-child(%d) .name', $index));
 
-        if (!empty($element)) {
-            return $element->getText();
+        if (empty($element)) {
+            throw new \Exception();
         }
+
+        return $element->getText();
     }
 
     public function getArticleDate($index)
     {
         $element = $this->find('css', sprintf('article:nth-child(%d) .date', $index));
 
-        if (!empty($element)) {
-            return $element->getText();
+        if (empty($element)) {
+            throw new \Exception();
         }
+
+        return $element->getText();
     }
 
     public function getArticleContent($index)
     {
         $element = $this->find('css', sprintf('article:nth-child(%d) .content', $index));
 
-        if (!empty($element)) {
-            return $element->getText();
+        if (empty($element)) {
+            throw new \Exception();
         }
+
+        return $element->getText();
     }
 
 }

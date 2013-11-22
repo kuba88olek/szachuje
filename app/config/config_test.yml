@@ -19,5 +19,4 @@ doctrine:
     dbal:
         driver: "pdo_sqlite"
         user: "%database_user%"
-        password: "%database_password%"
         path: "%kernel.root_dir%/data/%database_name%-tst.db"

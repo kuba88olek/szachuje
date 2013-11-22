@@ -143,7 +143,7 @@ class WebUserContext extends PageObjectContext implements KernelAwareInterface, 
      */
     public function powinienemZobaczycNaglowekPrawejKolumny($name)
     {
-        $header = $this->mink->getSession()->getPage()->find('css', '#column-right-header');
+        $header = $this->getPage('Strona glowna')->find('css', '#column-right-header');
         expect($header)->toNotBeNull();
         expect($header->getText())->toBe($name);
     }
@@ -170,18 +170,16 @@ class WebUserContext extends PageObjectContext implements KernelAwareInterface, 
      */
     public function powinienemZobaczycNaglowkiAktualnosci(TableNode $table)
     {
-        $news = $this->mink->getSession()->getPage('Strona główna')->findAll('css', 'article');
+        $news = $this->getPage('Strona glowna')->findAll('css', 'article');
 
         expect($news)->shouldHaveCount(count($table->getHash()));
 
         $pageArticle = reset($news);
         foreach ($table->getHash() as $row) {
             $articleName = $pageArticle->find('css', '.name');
-            expect($articleName)->toNotBeNull();
             expect($articleName->getText())->toBe($row['Nazwa']);
 
             $articleDate = $pageArticle->find('css', '.date');
-            expect($articleDate)->toNotBeNull();
             expect($articleDate->getText())->toBe($row['Data']);
 
             $pageArticle = next($news);
@@ -193,7 +191,7 @@ class WebUserContext extends PageObjectContext implements KernelAwareInterface, 
      */
     public function powinienemZobaczycGrafikeObrazujacaDzialalnoscFirmy()
     {
-        $page = $this->mink->getSession()->getPage('Strona główna');
+        $page = $this->getPage('Strona glowna');
         expect($page->has('css', 'img.company-image'))->toBe(true);
     }
 
@@ -202,7 +200,7 @@ class WebUserContext extends PageObjectContext implements KernelAwareInterface, 
      */
     public function grafikeObrazujacaDzialalnoscFirmyNiePowinnaBycWidoczna()
     {
-        $companyImage = $this->mink->getSession()->getPage()->find('css', 'img.company-image');
+        $companyImage = $this->getPage('Strona glowna')->find('css', 'img.company-image');
 
         if (empty($companyImage)) {
             return;
@@ -211,20 +209,22 @@ class WebUserContext extends PageObjectContext implements KernelAwareInterface, 
         expect($companyImage->isVisible())->toBe(false);
     }
 
+    /**
+     * @Given /^powinienem zobaczyć treść podstawową:$/
+     */
+    public function powinienemZobaczycTrescPodstawowa(PyStringNode $expectedContent)
+    {
+        $page = $this->getPage('Strona glowna');
+        expect($page->getContentFirst())->toBe((string) $expectedContent);
+    }
 
     /**
-     * @Given /^powinienem zobaczyć treść strony:$/
+     * @Given /^powinienem zobaczyć treść dodatkową:$/
      */
-    public function powinienemZobaczycTrescStrony(PyStringNode $string)
+    public function powinienemZobaczycTrescDodatkowa(PyStringNode $expectedContent)
     {
-        $page = $this->mink->getSession()->getPage('Strona główna');
-        $contentElement = $page->find('css', '.content');
-
-        expect($contentElement)->toNotBeNull();
-
-        $elementContent = preg_replace('/\s+/', ' ', $contentElement->getText());
-        $expectedContent = preg_replace('/\s+/', ' ', (string) $string);
-        expect($elementContent)->toBe($expectedContent);
+        $page = $this->getPage('Strona glowna');
+        expect($page->getContentSecond())->toBe((string) $expectedContent);
     }
 
 }
