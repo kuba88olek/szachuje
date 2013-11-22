@@ -13,7 +13,7 @@ class StronaGlowna extends Page
         $element = $this->find('css', '#content-first');
 
         if (empty($element)) {
-            throw new \Exception();
+            throw new \Exception('element "#content-first" not found');
         }
 
         return $element->getHtml();
@@ -24,7 +24,7 @@ class StronaGlowna extends Page
         $element = $this->find('css', '#content-second');
 
         if (empty($element)) {
-            throw new \Exception();
+            throw new \Exception('element "#content-second" not found');
         }
 
         return $element->getHtml();

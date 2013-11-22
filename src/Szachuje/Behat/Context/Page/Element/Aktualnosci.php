@@ -19,7 +19,7 @@ class Aktualnosci extends Element
         $element = $this->find('css', sprintf('article:nth-child(%d) .name', $index));
 
         if (empty($element)) {
-            throw new \Exception();
+            throw new \Exception('element "article:nth-child(%d) .name" not found');
         }
 
         return $element->getText();
@@ -30,7 +30,7 @@ class Aktualnosci extends Element
         $element = $this->find('css', sprintf('article:nth-child(%d) .date', $index));
 
         if (empty($element)) {
-            throw new \Exception();
+            throw new \Exception('element "article:nth-child(%d) .date" not found');
         }
 
         return $element->getText();
@@ -41,7 +41,7 @@ class Aktualnosci extends Element
         $element = $this->find('css', sprintf('article:nth-child(%d) .content', $index));
 
         if (empty($element)) {
-            throw new \Exception();
+            throw new \Exception('element "article:nth-child(%d) .content" not found');
         }
 
         return $element->getText();
