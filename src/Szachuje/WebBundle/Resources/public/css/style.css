@@ -1,0 +1,100 @@
+body {
+    font-size: 13px;
+    line-height: 18px;
+    color: #313131;
+    fot-family: Arial, sans-serif;
+}
+
+h1,
+h2,
+h3 {
+    font-size: 30px;
+    line-height: 30px;
+    margin: 0 0 25px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+}
+
+.width {
+    max-width: 920px;
+    padding: 0 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header {
+    height: 150px;
+    background: url(../img/top-bg.png);
+    margin-bottom: 30px;
+}
+
+footer {
+    height: 232px;
+}
+
+.page-body {
+    margin-bottom: 40px;
+}
+
+#content-first,
+#content-second {
+    margin-bottom: 15px;
+    text-indent: 35px;
+}
+
+.company-image {
+    margin-bottom: 15px;
+}
+
+.article {
+    padding-bottom: 20px;
+    border-bottom: solid 1px #c1c1c1;
+    margin-bottom: 20px;
+}
+
+.article .name {
+    color: #e80041;
+    margin-bottom: 5px;
+    font-size: 16px;
+    display: inline;
+    line-height: 26px;
+}
+
+.article .name:hover {
+    color: #fff;
+    background: #e80041;
+}
+
+.article .date-row {
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+.article .date {
+    font-style: normal;
+}
+
+.article .content {
+    text-indent: 35px;
+}
+
+.article:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+@media (max-width: 768px) {
+
+    header {
+        height: 100px;
+    }
+
+}
+
