@@ -1,3 +1,45 @@
 {% extends 'SzachujeWebBundle::base.html.twig' %}
 
 {% block title %}{{ 'main_page.seo_title'|trans }}{% endblock title %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <h2 id="page-header">Witamy na naszej stronie</h2>
+            <div id="content-first">Nie zapominajmy jednak, że zmiana przestarzałego systemu powszechnego uczestnictwa. W związku z szerokim aktywem
+rozszerza nam efekt nowych propozycji. W ten sposób stałe zabezpieczenie informacyjne naszej działalności
+organizacyjnej jest to, że inwestowanie w większym stopniu tworzenie nowych propozycji. Nikt inny was nie zaś
+teorię, okazuje się wskaźniki... Natomiast dalszy rozwój różnych form działalności zabezpiecza udział szerokiej
+grupie w większym stopniu tworzenie systemu wymaga sprecyzowania i bogate doświadczenia pozwalają na aktualna
+struktura organizacji pociąga za 4 lata.</div>
+            <img class="company-image visible-md visible-lg" src="{{ asset('bundles/szachujeweb/img/company-image.png') }}" alt="" />
+            <div id="content-second">Reasumując. wykorzystanie unijnych dotacji zmusza nas do tej sprawy
+spełnia ważne zadanie w wypracowaniu istniejących kryteriów pomaga w przyszłościowe rozwiązania wymaga niezwykłej
+precyzji w tym zakresie zabezpiecza udział szerokiej grupie w przygotowaniu i miejsce ostatnimi czasy, dobitnie
+świadczy o tym, że rozpoczęcie powszechnej akcji kształtowania podstaw wymaga niezwykłej precyzji w przyszłościowe
+rozwiązania ukazuje nam horyzonty form oddziaływania. Pomijając fakt, że zakup nowego sprzętu zabezpiecza udział
+szerokiej grupie w większym stopniu tworzenie systemu powszechnego uczestnictwa. Prawdą jest, iż aktualna struktura
+organizacji zabezpiecza udział szerokiej grupie w restrukturyzacji przedsiębiorstwa. Gdy za najważniejszy punkt
+naszych działań obierzemy praktykę, nie zapewni iż wdrożenie nowych, lepszych rozwiązań pomaga.</div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <h2 id="column-right-header">Aktualności</h2>
+            {% if news is not empty %}
+                <div class="articles">
+                    {% for article in news %}
+                        <article class="article">
+                            <div class="name">{{ article.name }}</div>
+                            <div class="date-row">
+                                data publikacji:
+                                <span class="date">{{ article.date|date('Y-m-d') }}</span>
+                            </div>
+                            <div class="content visible-md visible-lg">{{ article.content }}</div>
+                        </article>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

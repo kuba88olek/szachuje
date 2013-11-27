@@ -14,6 +14,14 @@ class PageController extends Controller
      */
     public function indexAction()
     {
-        return array();
+        $manager = $this->getDoctrine()->getManager();
+        $newsRepo = $manager->getRepository('SzachujeWebBundle:News');
+        $qb = $newsRepo->createQueryBuilder('n');
+        $qb->orderBy('n.date', 'DESC')
+            ->setMaxResults(3);
+
+        return array(
+            'news' => $qb->getQuery()->getResult(),
+        );
     }
 }

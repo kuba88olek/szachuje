@@ -14,3 +14,9 @@ web_profiler:
 
 swiftmailer:
     disable_delivery: true
+
+doctrine:
+    dbal:
+        driver: "pdo_sqlite"
+        user: "%database_user%"
+        path: "%kernel.root_dir%/data/%database_name%-tst.db"

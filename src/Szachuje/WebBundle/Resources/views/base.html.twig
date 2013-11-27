@@ -7,6 +7,7 @@
     {% block stylesheets %}
     {% stylesheets
         'bundles/szachujeweb/css/bootstrap_grid.css'
+        'bundles/szachujeweb/css/style.css'
     filter='cssrewrite' %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
@@ -14,8 +15,15 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
 <body>
-<h1 id="logo" class="hidden-xs"><img src="{{ asset('bundles/szachujeweb/img/logo.png') }}" alt=""/></h1>
-{% block body %}{% endblock %}
-{% block javascripts %}{% endblock %}
+    <header id="header">
+        <h1 id="logo" class="hidden-xs"><img src="{{ asset('bundles/szachujeweb/img/logo.png') }}" alt=""/></h1>
+    </header>
+    <div class="page-body width">
+        {% block body %}{% endblock %}
+    </div>
+    <footer id="footer">
+
+    </footer>
+    {% block javascripts %}{% endblock %}
 </body>
 </html>

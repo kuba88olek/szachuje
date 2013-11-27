@@ -11,4 +11,5 @@ class FeatureContext extends BehatContext
         $this->useContext('browser', new BrowserContext($parameters['browser_width'], $parameters['browser_height']));
         $this->useContext('web-user', new WebUserContext());
     }
+
 }

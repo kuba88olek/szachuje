@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\FSi\TrainingBundle;
+namespace spec\Szachuje\WebBundle;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
