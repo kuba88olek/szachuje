@@ -15,9 +15,6 @@ Potrzeba biznesowa: Strona informacyjna agencji kreatywnej Szachuje przystosowan
       | Rukturyzacja przedsiębiorstwa            | 2013-11-03 | Systemu wymaga sprecyzowania |
     Oraz że otworzyłem "Stronę główną" serwisu
 
-  Scenariusz: Ukrycie zbędnych elementów strony głównej w wersji mobilnej
-    Wtedy logo firmy Szachuje nie powinno być widoczne
-
   Scenariusz: Wyświetlanie aktualności
     Wtedy powinienem zobaczyć nagłowek prawej kolumny "Aktualności"
     Oraz powinienem zobaczyć nagłówki aktualności:
