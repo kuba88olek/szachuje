@@ -2,6 +2,7 @@
 
 namespace Szachuje\Behat\Context;
 
+use Behat\Behat\Context\Step\Given;
 use Behat\Behat\Exception\BehaviorException;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
@@ -41,6 +42,8 @@ class WebUserContext extends PageObjectContext implements KernelAwareInterface, 
      */
     public function createDatabase()
     {
+        $this->dropDatabase();
+
         $manager = $this->getDoctrineManager();
         $metadata = $manager->getMetadataFactory()->getAllMetadata();
         $tool = new SchemaTool($manager);
@@ -91,11 +94,34 @@ class WebUserContext extends PageObjectContext implements KernelAwareInterface, 
     }
 
     /**
+     * @Given /^że otworzyłem dowolną stronę serwisu$/
+     */
+    public function zeOtworzylemDowolnaStroneSerwisu()
+    {
+        return new Given('że otworzyłem "Stronę główną" serwisu');
+    }
+
+
+    /**
      * @Given /^na karcie w przeglądarce powinienem zobaczyć następujący tytuł$/
      */
     public function naKarcieWPrzegladarcePowinienemZobaczycNastepujacyTytul(PyStringNode $seoTitle)
     {
         expect($this->mink->getSession()->getPage()->find('css', 'title')->getText())->toBe((string) $seoTitle);
+    }
+
+    /**
+     * @Given /^logo firmy Szachuje powinno być widoczne$/
+     */
+    public function logoFirmySzachujePowinnoBycWidoczne()
+    {
+        $logo = $this->mink->getSession()->getPage()->find('css', '#logo');
+
+        if (empty($logo)) {
+            throw new \Exception('logo should be visible');
+        }
+
+        expect($logo->isVisible())->toBe(true);
     }
 
     /**
@@ -105,7 +131,7 @@ class WebUserContext extends PageObjectContext implements KernelAwareInterface, 
     {
         $logo = $this->mink->getSession()->getPage()->find('css', '#logo');
         if (!isset($logo)) {
-            echo $this->mink->getSession()->getPage()->getHtml();
+            return;
         }
         expect($logo->isVisible())->toBe(false);
     }
@@ -225,6 +251,76 @@ class WebUserContext extends PageObjectContext implements KernelAwareInterface, 
     {
         $page = $this->getPage('Strona glowna');
         expect($page->getContentSecond())->toBe((string) $expectedContent);
+    }
+
+    /**
+     * @Given /^powinienem w nagłówku widzieć menu zawierające elementy:$/
+     */
+    public function powinienemWNaglowkuWidziecMenuSerwisuZawierajaceElementy(TableNode $table)
+    {
+        $headerMenu = $this->getPage('Strona glowna')->getElement('Menu Naglowka');
+
+        expect($headerMenu->getElementsCount())->shouldBe(count($table->getHash()));
+
+        foreach ($table->getHash() as $index => $row) {
+            expect($headerMenu->getElementText($index+1))->toBe($row['Nazwa']);
+        }
+    }
+
+    /**
+     * @Given /^powinienem w stopce zobaczyć nagłowek "([^"]*)"$/
+     */
+    public function powinienemWStopceZobaczycNaglowek($name)
+    {
+        $headerMenu = $this->getPage('Strona glowna')->find('css', '#footer-contact-title');
+
+        if (empty($headerMenu)) {
+            throw new \Exception('element #footer-contact-title not exists');
+        }
+
+        expect($headerMenu->getText())->toBe($name);
+    }
+
+    /**
+     * @Given /^dane w stopce powiny zawierac treści:$/
+     */
+    public function daneWStopcePowinyZawieracTresci(TableNode $table)
+    {
+        $footerContact = $this->getPage('Strona glowna')->getElement('Kontakt Stopki');
+
+        expect($footerContact->getElementsCount())->shouldBe(count($table->getHash()));
+
+        foreach ($table->getHash() as $index => $row) {
+            expect($footerContact->getElementText($index+1))->toBe($row['Nazwa']);
+        }
+    }
+
+    /**
+     * @Given /^powinienem w stopce widzieć menu serwisu zawierające elementy:$/
+     */
+    public function powinienemWStopceWidziecMenuSerwisuZawierajaceElementy(TableNode $table)
+    {
+        $footerMenu = $this->getPage('Strona glowna')->getElement('Menu Stopki');
+
+        expect($footerMenu->getElementsCount())->shouldBe(count($table->getHash()));
+
+        foreach ($table->getHash() as $index => $row) {
+            expect($footerMenu->getElementText($index+1))->toBe($row['Nazwa']);
+        }
+    }
+
+    /**
+     * @Given /^menu w stopce nie powinno być widoczne$/
+     */
+    public function menuWStopceNiePowinnoBycWidoczne()
+    {
+        $footerMenu = $this->getPage('Strona glowna')->getElement('Menu Stopki');
+
+        if (empty($footerMenu)) {
+            return;
+        }
+
+        expect($footerMenu->isVisible())->toBe(false);
     }
 
 }

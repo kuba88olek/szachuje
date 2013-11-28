@@ -1,6 +1,6 @@
 # language: pl
 
-@pc
+@pc @db @javascript
 Aspekt: Widoczność stałych elementów serwisu podczas przeglądania na ekranie w rozdzielczości 960x800px lub wyższej
   Jako użytkownik szukający informacji i przeglądający stronę w rozdzielczości 960x800px lub wyższej
   Powienienem widzieć nagłowek strony zawierający menu serwisu oraz logo
@@ -11,7 +11,7 @@ Aspekt: Widoczność stałych elementów serwisu podczas przeglądania na ekrani
 
   Scenariusz: Wyświetlanie naglówka strony
     Wtedy logo firmy Szachuje powinno być widoczne
-    Oraz powinienem w nagłówku widzieć menu serwisu zawierające elementy:
+    Oraz powinienem w nagłówku widzieć menu zawierające elementy:
       | Nazwa         |
       | STRONA GŁÓWNA |
       | O NAS         |

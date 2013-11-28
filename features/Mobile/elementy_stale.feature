@@ -1,6 +1,6 @@
 # language: pl
 
-@mobile @javascript
+@mobile @db @javascript
 Aspekt: Widoczność stałych elementów serwisu podczas przeglądania na telefonie
   Jako użytkownik szukający informacji i przeglądający stronę na telefonie
   Powienienem widzieć nagłowek strony zawierający menu serwisu
