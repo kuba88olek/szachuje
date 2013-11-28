@@ -5,6 +5,14 @@ body {
     fot-family: Arial, sans-serif;
 }
 
+a {
+    color: #e80041;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
 h1,
 h2,
 h3 {
@@ -37,10 +45,16 @@ header {
 
 footer {
     height: 232px;
+    background: url(../img/footer-bg.png);
+    border-top: solid 1px #c1c1c1;
 }
 
 .page-body {
     margin-bottom: 40px;
+}
+
+#logo {
+    margin-top: 17px;
 }
 
 #content-first,
@@ -90,10 +104,78 @@ footer {
     border-bottom: none;
 }
 
+#footer-contact-title {
+    font-size: 30px;
+    margin: 15px 0 20px;
+}
+
+#menu-footer {
+    float: right;
+}
+
+#menu-footer li {
+    display: inline;
+}
+
+#menu-footer a {
+    color: #313131;
+    line-height: 26px;
+    display: inline-block;
+    padding: 0 3px;
+    margin-left: 3px;
+}
+
+#menu-footer a.active {
+    color: #e80041;
+}
+
+#menu-footer a:hover {
+    background: #e80041;
+    color: #fff;
+}
+
+#menu-top {
+    float: right;
+    margin-top: 90px;
+    font-size: 18px;
+    padding: 0;
+}
+
+#menu-top li {
+    display: inline-block;
+}
+
+#menu-top a {
+    color: #313131;
+    line-height: 26px;
+    display: inline-block;
+    padding: 0 3px;
+    margin-left: 3px;
+}
+
+#menu-top a.active {
+    color: #e80041;
+}
+
+#menu-top a:hover {
+    background: #e80041;
+    color: #fff;
+}
+
 @media (max-width: 768px) {
 
     header {
         height: 100px;
+    }
+
+    #menu-footer {
+        display: none;
+    }
+
+    #menu-top {
+        font-size: 14px;
+        float: none;
+        margin-top: 50px;
     }
 
 }

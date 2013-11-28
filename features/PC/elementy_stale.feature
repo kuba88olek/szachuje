@@ -27,6 +27,6 @@ Aspekt: Widoczność stałych elementów serwisu podczas przeglądania na ekrani
       | biuro@szachuje.com                  |
     Oraz powinienem w stopce widzieć menu serwisu zawierające elementy:
       | Nazwa         |
-      | STRONA GŁÓWNA |
-      | O NAS         |
-      | KONTAKT       |
+      | strona głowna |
+      | o nas         |
+      | kontakt       |
