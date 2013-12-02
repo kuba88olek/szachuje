@@ -60,6 +60,20 @@ class WebUserContext extends PageObjectContext implements KernelAwareInterface, 
         $tool->dropDatabase();
     }
 
+    /**
+     * @AfterScenario @clearcache
+     */
+    public function clearCache()
+    {
+        $cacheDir = $this->kernel->getCacheDir();
+
+        if (empty($cacheDir) || !is_dir($cacheDir)) {
+            return;
+        }
+
+        `rm -r $cacheDir`;
+    }
+
     public function setKernel(KernelInterface $kernel)
     {
         $this->kernel = $kernel;

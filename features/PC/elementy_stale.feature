@@ -1,6 +1,6 @@
 # language: pl
 
-@pc @db @javascript
+@pc @db @javascript @clearcache
 Aspekt: Widoczność stałych elementów serwisu podczas przeglądania na ekranie w rozdzielczości 960x800px lub wyższej
   Jako użytkownik szukający informacji i przeglądający stronę w rozdzielczości 960x800px lub wyższej
   Powienienem widzieć nagłowek strony zawierający menu serwisu oraz logo
