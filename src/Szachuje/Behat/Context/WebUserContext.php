@@ -373,7 +373,7 @@ class WebUserContext extends PageObjectContext implements KernelAwareInterface, 
      */
     public function powinienemZobaczycKomunikat($text)
     {
-        $message = $this->getPage('Kontakt')->find('css', '.alert');
+        $message = $this->getPage('Kontakt')->getMessage();
 
         if (empty($message)) {
             throw new \Exception('no message on page');
