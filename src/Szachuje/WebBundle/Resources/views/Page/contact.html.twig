@@ -5,22 +5,16 @@
 {% block title %}{{ 'contact_page.seo_title'|trans }}{% endblock title %}
 
 {% block body %}
-
     <div class="row">
-
         {% if message is not empty %}
             <div class="alert">
                 {{ message|trans }}
             </div>
         {% endif %}
-
-        <form action="{{ path('szachuje_contact') }}" method="post">
+        {{ form_start(form, {'action': path('szachuje_contact')}) }}
             {{ form_rest(form) }}
-            <input type="submit" value="Wyślij" />
-        </form>
-
+        {{ form_end(form) }}
     </div>
-
 {% endblock %}
 
 {% block form_widget_simple %}

@@ -9,5 +9,6 @@ contact_form:
     content: treść zapytania
     invalid: Formularz został wypełniony nieprawidłowo
     send: Wiadomość została wysłana
+    submit: Wyślij
     message:
         subject: Wiadomość z formularza kontaktowego
