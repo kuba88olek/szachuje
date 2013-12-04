@@ -1,0 +1,43 @@
+{% extends 'SzachujeWebBundle::base.html.twig' %}
+
+{% form_theme form _self %}
+
+{% block title %}{{ 'contact_page.seo_title'|trans }}{% endblock title %}
+
+{% block body %}
+
+    <div class="row">
+
+        {% if message is not empty %}
+            <div class="alert">
+                {{ message|trans }}
+            </div>
+        {% endif %}
+
+        <form action="{{ path('szachuje_contact') }}" method="post">
+            {{ form_rest(form) }}
+            <input type="submit" value="Wyślij" />
+        </form>
+
+    </div>
+
+{% endblock %}
+
+{% block form_widget_simple %}
+    {% spaceless %}
+        {% if errors is not empty %}
+            {% set attr = attr|merge({'class': (attr.class|default('') ~ ' error')}) %}
+        {% endif %}
+        {% set type = type|default('text') %}
+        <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+    {% endspaceless %}
+{% endblock form_widget_simple %}
+
+{% block textarea_widget %}
+    {% spaceless %}
+        {% if errors is not empty %}
+            {% set attr = attr|merge({'class': (attr.class|default('') ~ ' error')}) %}
+        {% endif %}
+        <textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
+    {% endspaceless %}
+{% endblock textarea_widget %}

@@ -32,7 +32,8 @@
                                 <a href="">O NAS</a>
                             </li>
                             <li>
-                                <a href="">KONTAKT</a>
+                                <a{% if app.request.attributes.get('_route') == 'szachuje_contact' %} class="active"{% endif %}
+                                        href="{{ path('szachuje_contact') }}">KONTAKT</a>
                             </li>
                         </ul>
                     </nav>
@@ -67,7 +68,8 @@
                             <a href="">o nas</a>
                         </li>
                         <li>
-                            <a href="">kontakt</a>
+                            <a{% if app.request.attributes.get('_route') == 'szachuje_contact' %} class="active"{% endif %}
+                                    href="{{ path('szachuje_contact') }}">kontakt</a>
                         </li>
                     </ul>
                 </nav>
