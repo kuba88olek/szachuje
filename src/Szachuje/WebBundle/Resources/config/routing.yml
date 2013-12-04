@@ -1,0 +1,7 @@
+szachuje_index:
+    path: /
+    defaults: { _controller: szachuje.web.controller:indexAction }
+
+szachuje_contact:
+    path: /kontakt
+    defaults: { _controller: szachuje.web.controller:contactAction }

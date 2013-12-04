@@ -3,3 +3,6 @@ szachuje_training:
     type:     annotation
     prefix:   /
 
+szachuje_web:
+    resource: "@SzachujeWebBundle/Resources/config/routing.yml"
+    prefix: /

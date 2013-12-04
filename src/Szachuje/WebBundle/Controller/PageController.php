@@ -2,21 +2,58 @@
 
 namespace Szachuje\WebBundle\Controller;
 
+use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Templating\EngineInterface;
 use Szachuje\WebBundle\Form\ContactType;
+use Symfony\Bundle\FrameworkBundle\Translation\Translator;
+use Symfony\Component\Form\FormFactory;
 
 class PageController extends Controller
 {
     /**
-     * @Route("/", name="szachuje_index")
+     * @var EntityManager
+     */
+    protected $em;
+
+    /**
+     * @var FormFactory
+     */
+    protected $formFactory;
+
+    /**
+     * @var \Swift_Mailer
+     */
+    protected $mailer;
+
+    /**
+     * @var Translator
+     */
+    protected $translator;
+
+    /**
+     * @var EngineInterface
+     */
+    protected $templating;
+
+    public function __construct(EntityManager $em, FormFactory $formFactory,
+                    EngineInterface $templating, Translator $translator, \Swift_Mailer $mailer)
+    {
+        $this->em = $em;
+        $this->templating = $templating;
+        $this->formFactory = $formFactory;
+        $this->translator = $translator;
+        $this->mailer = $mailer;
+    }
+
+    /**
      * @Template()
      */
     public function indexAction()
     {
-        $manager = $this->getDoctrine()->getManager();
-        $newsRepo = $manager->getRepository('SzachujeWebBundle:News');
+        $newsRepo = $this->em->getRepository('SzachujeWebBundle:News');
         $qb = $newsRepo->createQueryBuilder('n');
         $qb->orderBy('n.date', 'DESC')
             ->setMaxResults(3);
@@ -27,14 +64,12 @@ class PageController extends Controller
     }
 
     /**
-     * @Route("/kontakt", name="szachuje_contact")
      * @Template
      */
-    public function contactAction()
+    public function contactAction(Request $request)
     {
-        $contactForm = $this->createForm(new ContactType());
+        $contactForm = $this->formFactory->create(new ContactType());
 
-        $request = $this->getRequest();
         if ($request->isMethod('POST')) {
             $contactForm->handleRequest($request);
             if ($contactForm->isValid()) {
@@ -51,18 +86,17 @@ class PageController extends Controller
         );
     }
 
-    private function sendEmail($data)
+    public function sendEmail($data)
     {
-        $body = $this->renderView('SzachujeWebBundle::contact_email.txt.twig', $data);
+        $body = $this->templating->render('SzachujeWebBundle::contact_email.txt.twig', $data);
 
-        $translator = $this->get('translator');
         $message = \Swift_Message::newInstance()
-            ->setSubject($translator->trans('contact_form.message.subject'))
+            ->setSubject($this->translator->trans('contact_form.message.subject'))
             ->setFrom($data['email'])
             ->setTo('szachuje@example.com')
             ->setBody($body);
 
-        $this->get('mailer')->send($message);
+        $this->mailer->send($message);
     }
 
 }

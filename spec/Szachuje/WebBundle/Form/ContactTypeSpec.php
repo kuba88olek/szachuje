@@ -3,7 +3,6 @@
 namespace spec\Szachuje\WebBundle\Form;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\Validator\Constraints;
 
