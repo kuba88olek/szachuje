@@ -64,52 +64,60 @@ class PageControllerSpec extends ObjectBehavior
         $this->contactAction($request)->shouldHaveType('Symfony\Component\HttpFoundation\Response');
     }
 
-    public function it_should_accept_only_post(Request $request)
-    {
-        $request->isMethod('POST')->willReturn(false);
-
-        $this->shouldThrow('Symfony\Component\HttpKernel\Exception\NotFoundHttpException')
-            ->duringContactFormHandleAction($request);
-    }
-
     public function it_should_not_send_email_on_invalid_data(FormFactory $formFactory, Form $form, Request $request,
-        \Swift_Mailer $mailer, Router $router)
+        \Swift_Mailer $mailer, Router $router, TwigEngine $templating, FormView $formView)
     {
         $formFactory->create(Argument::type('Szachuje\WebBundle\Form\ContactType'))->willReturn($form);
         $request->isMethod('POST')->willReturn(true);
         $form->handleRequest($request)->shouldBeCalled();
         $form->isValid()->shouldBeCalled()->willReturn(false);
+        $form->createView()->shouldBeCalled()->willReturn($formView);
 
         $mailer->send(Argument::type('\Swift_Message'))
             ->shouldNotBeCalled();
 
-        $router->generate(Argument::type('string'))->willReturn('/sample_path');
+        $templating->renderResponse('SzachujeWebBundle:Page:contact.html.twig', array(
+            'form' => $formView,
+            'message' => 'contact_form.invalid',
+        ))
+            ->shouldBeCalled()
+            ->willReturn(new Response());
 
-        $this->contactFormHandleAction($request)->shouldHaveType('Symfony\Component\HttpFoundation\RedirectResponse');
+        $this->contactAction($request)->shouldHaveType('Symfony\Component\HttpFoundation\Response');
     }
 
     public function it_should_send_email(FormFactory $formFactory, Form $form, Request $request,
-         \Swift_Mailer $mailer, Router $router)
+         \Swift_Mailer $mailer, Router $router, TwigEngine $templating, FormView $formView)
     {
         $formFactory->create(Argument::type('Szachuje\WebBundle\Form\ContactType'))->willReturn($form);
         $request->isMethod('POST')->willReturn(true);
         $form->handleRequest($request)->shouldBeCalled();
         $form->isValid()->shouldBeCalled()->willReturn(true);
+        $form->createView()->shouldBeCalled()->willReturn($formView);
 
-        $form->getData()->willReturn(array(
+        $formData = array(
             'first_name' => 'Jan',
             'last_name' => 'Kowalski',
             'email' => 'jan@example.com',
             'phone' => '123456789',
             'content' => 'Lorem Ipsum',
-        ));
+        );
+        $form->getData()->willReturn($formData);
+
+        $templating->render('SzachujeWebBundle::contact_email.txt.twig', $formData)
+            ->shouldBeCalled();
 
         $mailer->send(Argument::type('\Swift_Message'))
             ->shouldBeCalled();
 
-        $router->generate(Argument::type('string'))->willReturn('/sample_path');
+        $templating->renderResponse('SzachujeWebBundle:Page:contact.html.twig', array(
+            'form' => $formView,
+            'message' => 'contact_form.send',
+        ))
+            ->shouldBeCalled()
+            ->willReturn(new Response());
 
-        $this->contactFormHandleAction($request)->shouldHaveType('Symfony\Component\HttpFoundation\RedirectResponse');
+        $this->contactAction($request)->shouldHaveType('Symfony\Component\HttpFoundation\Response');
     }
 
 }
