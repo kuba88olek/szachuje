@@ -5,7 +5,9 @@ namespace spec\Szachuje\WebBundle\Controller;
 use Doctrine\ORM\EntityRepository;
 use PhpSpec\ObjectBehavior;
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\Form\Form;
 use Symfony\Component\Form\FormFactory;
+use Symfony\Component\Form\FormView;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\TwigBundle\TwigEngine;
 use Symfony\Bundle\FrameworkBundle\Translation\Translator;
@@ -15,11 +17,6 @@ use Prophecy\Argument;
 
 class PageControllerSpec extends ObjectBehavior
 {
-    /**
-     * @var \Swift_Mailer
-     */
-    protected $em;
-
     public function let(EntityManager $em, FormFactory $formFactory,
         TwigEngine $templating, Translator $translator, \Swift_Mailer $mailer)
     {
@@ -44,6 +41,26 @@ class PageControllerSpec extends ObjectBehavior
             ->willReturn(new Response());
 
         $this->indexAction()->shouldHaveType('Symfony\Component\HttpFoundation\Response');
+    }
+
+    public function it_should_render_contactpage(FormFactory $formFactory, Form $form, Request $request,
+        TwigEngine $templating, FormView $formView)
+    {
+        $formFactory->create(Argument::type('Szachuje\WebBundle\Form\ContactType'))
+            ->shouldBeCalled()
+            ->willReturn($form);
+
+        $form->createView()->shouldBeCalled()->willReturn($formView);
+        $request->isMethod('POST')->willReturn(false);
+
+        $templating->renderResponse('SzachujeWebBundle:Page:contact.html.twig', array(
+            'form' => $formView,
+            'message' => null,
+        ))
+            ->shouldBeCalled()
+            ->willReturn(new Response());
+
+        $this->contactAction($request)->shouldHaveType('Symfony\Component\HttpFoundation\Response');
     }
 
 }
