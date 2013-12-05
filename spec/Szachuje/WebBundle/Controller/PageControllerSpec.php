@@ -2,13 +2,15 @@
 
 namespace spec\Szachuje\WebBundle\Controller;
 
+use Doctrine\ORM\EntityRepository;
 use PhpSpec\ObjectBehavior;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Templating\EngineInterface;
+use Symfony\Bundle\TwigBundle\TwigEngine;
 use Symfony\Bundle\FrameworkBundle\Translation\Translator;
-use Szachuje\WebBundle\Form\ContactType;
+use Symfony\Component\HttpFoundation\Response;
+use Szachuje\WebBundle\Entity\News;
 use Prophecy\Argument;
 
 class PageControllerSpec extends ObjectBehavior
@@ -16,32 +18,32 @@ class PageControllerSpec extends ObjectBehavior
     /**
      * @var \Swift_Mailer
      */
-    protected $mailer;
+    protected $em;
 
     public function let(EntityManager $em, FormFactory $formFactory,
-                        EngineInterface $templating, Translator $translator, \Swift_Mailer $mailer)
+        TwigEngine $templating, Translator $translator, \Swift_Mailer $mailer)
     {
-        $this->mailer = $mailer;
         $this->beConstructedWith($em, $formFactory, $templating, $translator, $mailer);
     }
 
-    public function it_is_initializable()
+    public function it_should_render_homepage(EntityManager $em, TwigEngine $templating, EntityRepository $repository,
+          News $news)
     {
-        $this->shouldHaveType('Szachuje\WebBundle\Controller\PageController');
-    }
+        $em->getRepository('SzachujeWebBundle:News')
+            ->shouldBeCalled()
+            ->willReturn($repository);
 
-    public function it_should_call_email()
-    {
-        $this->mailer->send(Argument::type('Swift_Message'))->shouldBeCalled();
+        $repository->findBy(array(), array('date' => 'DESC'), 3)
+            ->shouldBeCalled()
+            ->willReturn(array($news, $news, $news));
 
-        $this->sendEmail(array(
-            'first_name' => 'Jan',
-            'last_name' => 'Kowalski',
-            'email' => 'jan@example.com',
-            'phone' => '123456789',
-            'content' => 'Lorem Ipsum',
-            'submit' => 'Wyślij',
-        ));
+        $templating->renderResponse('SzachujeWebBundle:Page:index.html.twig', array(
+            'news' => array($news, $news, $news),
+        ))
+            ->shouldBeCalled()
+            ->willReturn(new Response());
+
+        $this->indexAction()->shouldHaveType('Symfony\Component\HttpFoundation\Response');
     }
 
 }
