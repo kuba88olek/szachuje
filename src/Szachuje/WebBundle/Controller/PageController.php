@@ -3,15 +3,14 @@
 namespace Szachuje\WebBundle\Controller;
 
 use Doctrine\ORM\EntityManager;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Templating\EngineInterface;
 use Szachuje\WebBundle\Form\ContactType;
 use Symfony\Bundle\FrameworkBundle\Translation\Translator;
 use Symfony\Component\Form\FormFactory;
+use Symfony\Bundle\TwigBundle\TwigEngine;
 
-class PageController extends Controller
+class PageController
 {
     /**
      * @var EntityManager
@@ -38,8 +37,9 @@ class PageController extends Controller
      */
     protected $templating;
 
-    public function __construct(EntityManager $em, FormFactory $formFactory,
-                    EngineInterface $templating, Translator $translator, \Swift_Mailer $mailer)
+
+    public function __construct(EntityManager $em, FormFactory $formFactory, TwigEngine $templating,
+        Translator $translator, \Swift_Mailer $mailer)
     {
         $this->em = $em;
         $this->templating = $templating;
@@ -48,24 +48,16 @@ class PageController extends Controller
         $this->mailer = $mailer;
     }
 
-    /**
-     * @Template()
-     */
     public function indexAction()
     {
         $newsRepo = $this->em->getRepository('SzachujeWebBundle:News');
-        $qb = $newsRepo->createQueryBuilder('n');
-        $qb->orderBy('n.date', 'DESC')
-            ->setMaxResults(3);
+        $news = $newsRepo->findBy(array(), array('date' => 'DESC'), 3);
 
-        return array(
-            'news' => $qb->getQuery()->getResult(),
-        );
+        return $this->templating->renderResponse('SzachujeWebBundle:Page:index.html.twig', array(
+            'news' => $news,
+        ));
     }
 
-    /**
-     * @Template
-     */
     public function contactAction(Request $request)
     {
         $contactForm = $this->formFactory->create(new ContactType());
@@ -80,13 +72,13 @@ class PageController extends Controller
             }
         }
 
-        return array(
+        return $this->templating->renderResponse('SzachujeWebBundle:Page:contact.html.twig', array(
             'form' => $contactForm->createView(),
             'message' => empty($message) ? null: $message,
-        );
+        ));
     }
 
-    public function sendEmail($data)
+    protected function sendEmail($data)
     {
         $body = $this->templating->render('SzachujeWebBundle::contact_email.txt.twig', $data);
 
