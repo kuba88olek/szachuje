@@ -1,0 +1,4 @@
+services:
+    szachuje.web.controller:
+        class: Szachuje\WebBundle\Controller\PageController
+        arguments: ["@doctrine.orm.entity_manager", "@form.factory", "@templating", "@translator", "@mailer"]

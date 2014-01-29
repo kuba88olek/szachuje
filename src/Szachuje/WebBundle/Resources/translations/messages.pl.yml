@@ -1,2 +1,17 @@
 main_page:
     seo_title: Szachuje agencja kreatywna - strona główna
+
+contact_page:
+    seo_title: Szachuje agencja kreatywna - kontakt
+
+contact_form:
+    first_name: imię
+    last_name: nazwisko
+    email: adres e-mail
+    phone: numer telefonu
+    content: treść zapytania
+    invalid: Formularz został wypełniony nieprawidłowo
+    send: Wiadomość została wysłana
+    submit: Wyślij
+    message:
+        subject: Wiadomość z formularza kontaktowego

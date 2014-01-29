@@ -94,12 +94,16 @@ class WebUserContext extends PageObjectContext implements KernelAwareInterface, 
 
     /**
      * @Given /^że otworzyłem "([^"]*)" serwisu$/
+     * @Given /^że otworzyłem stronę "([^"]*)"$/
      */
     public function zeOtworzylemSerwisu($pageName)
     {
         switch ($pageName) {
             case 'Stronę główną':
                 $this->getPage('Strona Glowna')->open();
+                break;
+            case 'Kontakt':
+                $this->getPage('Kontakt')->open();
                 break;
             default:
                 throw new BehaviorException(sprintf("Cant open page %s", $pageName));
@@ -114,7 +118,6 @@ class WebUserContext extends PageObjectContext implements KernelAwareInterface, 
     {
         return new Given('że otworzyłem "Stronę główną" serwisu');
     }
-
 
     /**
      * @Given /^na karcie w przeglądarce powinienem zobaczyć następujący tytuł$/
@@ -335,6 +338,105 @@ class WebUserContext extends PageObjectContext implements KernelAwareInterface, 
         }
 
         expect($footerMenu->isVisible())->toBe(false);
+    }
+
+    /**
+     * @Given /^powinienem zobaczyć formularz z polami:$/
+     */
+    public function powinienemZobaczycFormularzZPolami(TableNode $table)
+    {
+        $contactPage = $this->getPage('Kontakt');
+
+        foreach ($table->getHash() as $row) {
+            expect($contactPage->hasField($row['Nazwa']))->toBe(true);
+        }
+    }
+
+    /**
+     * @Given /^powinienem zobaczyć przyck "([^"]*)"$/
+     */
+    public function powinienemZobaczycPrzyck($name)
+    {
+        expect($this->getPage('Kontakt')->hasButton($name))->toBe(true);
+    }
+
+    /**
+     * @Given /^nacisnę przycisk "([^"]*)"$/
+     */
+    public function nacisnePrzycisk($name)
+    {
+        $this->getPage('Kontakt')->pressButton($name);
+    }
+
+    /**
+     * @Given /^powinienem zobaczyć komunikat "([^"]*)"$/
+     */
+    public function powinienemZobaczycKomunikat($text)
+    {
+        $message = $this->getPage('Kontakt')->getMessage();
+
+        if (empty($message)) {
+            throw new \Exception('no message on page');
+        }
+
+        expect($message->getText())->toBe($text);
+    }
+
+    /**
+     * @Given /^powinny zostać oznaczone jako błędne pola:$/
+     */
+    public function powinnyZostacOznaczoneJakoBlednePola(TableNode $table)
+    {
+        $contactPage = $this->getPage('Kontakt');
+
+        foreach ($table->getHash() as $row) {
+            $field = $contactPage->findField($row['Nazwa']);
+            $className = $field->getAttribute('class');
+            expect(strpos($className, 'error'))->toNotBe(false);
+        }
+    }
+
+    /**
+     * @Given /^email nie powinien zostać wysłany$/
+     */
+    public function emailNiePowinienZostacWyslany()
+    {
+        $profiler = $this->kernel->getContainer()->get('profiler');
+        $profiles = $profiler->find('', '', 1, 'POST', '', '');
+        $profileInfo = end($profiles);
+        $profile = $profiler->loadProfile($profileInfo['token']);
+        $collector = $profile->getCollector('swiftmailer');
+
+        expect($collector->getMessageCount())->toBe(0);
+    }
+
+    /**
+     * @Given /^wypełniłem pole formularza kontaktowego "([^"]*)" wartością "([^"]*)"$/
+     */
+    public function wypelnilemPoleFormularzaKontaktowegoWartoscia($name, $value)
+    {
+        $this->getPage('Kontakt')->fillField($name, $value);
+    }
+
+    /**
+     * @Given /^na adres email firmy Szachuje powinien zostać wysłany email o temacie "([^"]*)" od nadawcy "([^"]*)" o treści:$/
+     */
+    public function naAdresEmailFirmySzachujePowinienZostacWyslanyEmailOTemacieOdNadawcyOTresci($subject, $target, PyStringNode $content)
+    {
+        $profiler = $this->kernel->getContainer()->get('profiler');
+        $profiles = $profiler->find('', '', 1, 'POST', '', '');
+        $profileInfo = end($profiles);
+        $profile = $profiler->loadProfile($profileInfo['token']);
+        $collector = $profile->getCollector('swiftmailer');
+
+        expect($collector->getMessageCount())->toBe(1);
+
+        foreach ($collector->getMessages('default') as $message) {
+            expect(array_key_exists('szachuje@example.com', $message->getTo()))->toBe(true);
+            expect(array_key_exists($target, $message->getFrom()))->toBe(true);
+            expect($message->getSubject())->toBe($subject);
+            expect($message->getBody())->toBe($content->getRaw());
+        }
     }
 
 }
