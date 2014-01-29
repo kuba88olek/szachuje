@@ -80,6 +80,7 @@ class { 'php':
 }
 
 php::module { 'php5-mysql': }
+php::module { 'php5-sqlite': }
 php::module { 'php5-cli': }
 php::module { 'php5-curl': }
 php::module { 'php5-intl': }

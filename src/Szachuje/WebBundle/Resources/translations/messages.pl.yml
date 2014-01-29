@@ -1,9 +1,13 @@
 header:
   menu:
-    main_page: Strona główna
-    about_us: O nas
-    contact: Kontakt
+    main_page: STRONA GŁÓWNA
+    about_us: O NAS
+    contact: KONTAKT
 footer:
+  menu:
+    main_page: strona główna
+    about_us: o nas
+    contact: kontakt
   left:
     title: Kontakt
     first_part: <p>Szachuje agencja public relations<br>ul. Warszawska 1/2, 12-345 WARSZAWA</p>
